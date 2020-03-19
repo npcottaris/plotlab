@@ -1,8 +1,6 @@
 # plotlab
-A toolbox for the automatic generation of publication quality Matlab plots
+Plotlab is a toolbox for the automatic generation of publication quality Matlab plots. The approach followed is to override various default plotting properties of the Matlab graphics root object so as to generate visually-engaging, publication-ready plots that have a consistent appearance across computing platforms (mac and linux) and across graphics formats, all while minimizing the boilerplate code that the user has to write. 
 
-Scientific plots generated via the default plot settings in Matlab are un-appealing and quite illegible.
-The plotlab toolbox changes the default plot settings so as to render plots that are visually-engaging, publication-ready, and consistent across computing platforms (mac and linux) and across graphics formats. 
 
 <table bgcolor=>
 <tr>
