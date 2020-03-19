@@ -6,7 +6,7 @@ function demoDataPlot
     % Set the desired defaults
     plotlab.setDefaultsForLineMarkerPlot(...
         'figureWidthInches', 6, ...
-        'figureHeightInches', 6);
+        'figureHeightInches', 5);
     
     % New figure
     hFig = figure(1); clf;
