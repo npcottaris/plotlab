@@ -60,7 +60,7 @@ set(gca, 'XLim', [0.1 100], ,...
 <td>
 <pre lang="matlab">
 % Apply a desired plotlab recipe
-plotlab.applyRecipe('line marker plot', ...
+plotlab.applyRecipe('LineMarkerPlot', ...
   'figureWidthInches', 6, ...
   'figureHeightInches', 5);
 %    
@@ -74,10 +74,3 @@ plotlab.applyRecipe('line marker plot', ...
   <img src="assets/demoPlot.png" width="450" />
 </td>
 </table>
-
-
-| default plot  | plotlab plot|
-| ------------- | ------------- |
-|  ![](assets/plotcode.png = 250x250) | ![](assets/demoPlotDefault.png)|
-| --------- | ![](assets/demoPlot.png)  |
-
