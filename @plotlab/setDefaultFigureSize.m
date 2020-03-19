@@ -4,9 +4,6 @@ function setDefaultFigureSize(varargin)
     p.addParameter('width',  6.0, @(x)(isnumeric(x)));
     p.addParameter('height', 4.0, @(x)(isnumeric(x)));
     p.parse(varargin{:});
-   
-    % New plotting params do not go into effect if there are open figures.
-    close all;
     
     set(groot, 'defaultFigureUnits', p.Results.units);
     set(groot, 'defaultFigurePaperUnits', p.Results.units);
