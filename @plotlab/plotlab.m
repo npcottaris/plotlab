@@ -1,4 +1,4 @@
-classdef matPlot
+classdef plotlab
 
     methods (Static)
         %% Method to reset all default properties to their factory values

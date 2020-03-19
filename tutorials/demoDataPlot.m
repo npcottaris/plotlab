@@ -4,7 +4,7 @@ function demoDataPlot
     [sf, s, c, r, sfModel, sModel, cModel, rModel, b] = getData();
     
     % Set the desired defaults
-    matPlot.setDefaultsForLineMarkerPlot(...
+    plotlab.setDefaultsForLineMarkerPlot(...
         'figureWidthInches', 6, ...
         'figureHeightInches', 6);
     
@@ -45,10 +45,13 @@ function demoDataPlot
     box off; grid on
     
     % Offset the axes 
-    matPlot.offsetAxes(gca);
+    %plotlab.offsetAxes(gca);
+    
+    % Get gallery directory
+    p = getpref('plotlab');
+    fName = fullfile(p.galleryDir, 'demoPlot');
     
     % Export to PDF
-    fName = '/Users/nicolas/Documents/MATLAB/PlottingToolbox/MatlabPlottingToolbox/assets/demoPlot';
     print(fName, '-dpdf', '-r300');
     
     % Export to TIFF

@@ -17,5 +17,7 @@ end
 %% Specify project location
 plotlabBaseDir = tbLocateToolbox('plotlab');
 
+%% Specify useful directories location
 setpref(toolboxName,'recipesDir',fullfile(plotlabBaseDir,'recipes'));
 setpref(toolboxName,'tutorialsDir',fullfile(plotlabBaseDir,'tutorials'));
+setpref(toolboxName,'galleryDir',fullfile(plotlabBaseDir,'gallery'));
