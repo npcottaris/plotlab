@@ -11,6 +11,11 @@ The plotlab toolbox changes the default plot settings so as to render plots that
 <tr>
 <td>
 <pre lang="matlab">
+% --- Generic plotting code begins ---
+%
+% New figure
+hFig = figure(1); clf; hold on;
+%
 % Scatter plots (data)
 scatter(sf,c, 'ro');
 scatter(sf,s, 'bo');
@@ -37,6 +42,9 @@ set(gca, 'XLim', [0.1 100], ,...
  'XTick', [0.1 0.3 1 3 10 30 100], ...
  'YLim', [0 1.5], 'YTick', 0:0.25:1.5, ...
  'XScale', 'log');
+%
+% --- Generic plotting code ends ---
+%
 </pre>
 </td>
 <td>
@@ -51,32 +59,15 @@ set(gca, 'XLim', [0.1 100], ,...
 <tr>
 <td>
 <pre lang="matlab">
-% Scatter plots (data)
-scatter(sf,c, 'ro');
-scatter(sf,s, 'bo');
-scatter(sf,r, 'ko');
+% Apply a desired plotlab recipe
+plotlab.applyRecipe('line marker plot', ...
+  'figureWidthInches', 6, ...
+  'figureHeightInches', 5);
+%    
+% --- Generic plotting code begins ---
+%               ...
+% --- Generic plotting code ends ---
 %
-% Line plots (model)
-plot(sfModel, cModel, 'r-'); 
-plot(sfModel, sModel, 'b-'); 
-plot(sfModel, rModel, 'k-'); 
-plot(sfModel, b, 'k--');
-%
-% Legend
-legend({'center', 'surround', 'RGC'}, ...
- 'Location', 'NorthEast');
-%
-% Title
-title('mRGC');
-%
-% Labels
-xlabel('\it spatial frequency (c/deg)'); 
-ylabel('\it sensitivity');
-%
-set(gca, 'XLim', [0.1 100], ,...
- 'XTick', [0.1 0.3 1 3 10 30 100], ...
- 'YLim', [0 1.5], 'YTick', 0:0.25:1.5, ...
- 'XScale', 'log');
 </pre>
 </td>
 <td>
