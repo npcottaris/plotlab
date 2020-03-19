@@ -42,7 +42,7 @@ function demoLineMarkerPlot()
     
     % Get gallery directory
     p = getpref('plotlab');
-    fName = fullfile(p.galleryDir, 'mRGC_sf');
+    fName = fullfile(p.galleryDir, 'mRGCsf');
     
     % Export to PDF
     print(fName, '-dpdf', '-r300');
