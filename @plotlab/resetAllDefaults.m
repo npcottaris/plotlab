@@ -5,7 +5,7 @@ function resetAllDefaults()
     
     printNamesAndValues = false;
     refString = '*';
-    setDefaultProperties = matPlot.findGraphicsProperties('default', refString, printNamesAndValues);
+    setDefaultProperties = plotlab.findGraphicsProperties('default', refString, printNamesAndValues);
     
     % Get struct with all the factory properties and their values
     p = get(groot, 'factory');
