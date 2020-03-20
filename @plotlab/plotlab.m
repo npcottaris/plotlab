@@ -32,6 +32,9 @@ classdef plotlab
         % Offset the axes
         offsetAxes(axesHandle, varargin);
         
+        % Draw the outlines of a bar plot
+        barOutline(x,y);
+        
         % Display all default&factory properties (and their values)
         % that contain the refString in their name
         displayPropertiesReferringTo(refString);

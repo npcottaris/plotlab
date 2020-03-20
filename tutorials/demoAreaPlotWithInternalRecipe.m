@@ -1,12 +1,12 @@
-function demoCustomRecipe
+function demoCustomInternalRecipe
 
     [space, centerRFprofile, surroundRFprofile, subunits] = getData();
     
     colors = [1 0 0; 0 1 0];
     colors = cat(1, colors, repmat([0.2 0.2 0.2], [size(subunits,2) 1]));
     
-    % Set the desired defaults
-    myRecipe(colors);
+    % Apply the recipe included in this file
+    plotlab.applyRecipe(@()internalRecipe(colors));
     
     % New figure
     hFig = figure(1); clf; hold on;
@@ -31,7 +31,7 @@ function demoCustomRecipe
 
     % Limits
     set(gca, 'XLim', [-1.5 1.5], 'XTick', -1.5:0.5:1.5, ...
-        'YLim', [-0.2 1], 'YTick', [-1:0.2:1]);
+        'YLim', [-0.2 1], 'YTick', -1:0.2:1);
     
     % Box and grid
     box off; grid on
@@ -50,7 +50,8 @@ function demoCustomRecipe
     print(hFig, fName, '-dpng', '-r300');
 end
 
-function myRecipe(colors)
+function internalRecipe(colors)
+
    set(groot, 'defaultLineMarkerFaceColor', [0.75 0.75 0.75]);
    set(groot, 'defaultScatterMarkerFaceColor', [0.75 0.75 0.75]);
     
