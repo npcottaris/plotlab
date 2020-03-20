@@ -21,7 +21,7 @@ function demoCustomRecipe
     plot(space, surroundRFprofile,  'LineStyle', '-');
     
     % Legend
-    legend({'center', 'surround', 'subunits'}, 'Location', 'NorthEast');
+    legend({'center', 'surround', 'subunits'}, 'Location', 'NorthWest');
 
     % Title
     title(sprintf('pRGC RF profile'));
@@ -97,6 +97,7 @@ function myRecipe(colors)
    
    % Boxes
    set(groot, 'defaultAxesBox', 'on');
+   set(groot, 'defaultLegendBox', 'off');
    
    % Figure size
    plotlab.setDefaultFigureSize(...
