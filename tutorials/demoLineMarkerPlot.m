@@ -37,9 +37,6 @@ function demoLineMarkerPlot()
     % No box, add grid
     box off; grid on
     
-    % Offset the axes 
-    %plotlab.offsetAxes(gca);
-    
     % Get gallery directory
     p = getpref('plotlab');
     fName = fullfile(p.galleryDir, 'mRGCsf');

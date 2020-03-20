@@ -3,7 +3,7 @@ function applyRecipe(recipeName,varargin)
    
    % Parse input
    p = inputParser;
-   p.addRequired('recipeName', @ischar);
+   p.addRequired('recipeName', @(x)(ischar(x) || (isa(x,'function_handle'))));
    p.addParameter('colorOrder', plotlab.defaultColorOrder, @isnumeric);
    p.addParameter('lightTheme','light', @(x)((ischar(x))&&(ismember(x, {'light', 'dark'}))));
    p.addParameter('legendOnWhiteBackground', false, @islogical);
@@ -15,7 +15,16 @@ function applyRecipe(recipeName,varargin)
    % New plotting params do not go into effect if there are open figures.
    close all;
    
+   % Reset all default graphics parameters
+   plotlab.resetAllDefaults();
    
+   % If the recipe name is a function handle, execute that function handle
+   if (isa(p.Results.recipeName,'function_handle'))
+       p.Results.recipeName(varargin{:})
+       return;
+   end
+   
+   % Otherwise execute one of the builtin 
    % Set the color order
    plotlab.setDefaultColorOrder('rgbColors', p.Results.colorOrder);
    
