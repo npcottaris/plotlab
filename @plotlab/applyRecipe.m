@@ -2,7 +2,7 @@ function applyRecipe(recipeName,varargin)
 
    % Parse input
    p = inputParser;
-   p.addRequired('recipeName', @(x)((isa(x,'function_handle'))));
+   p.addRequired('recipeName', @(x)((isempty(x))||(isa(x,'function_handle'))));
    p.addParameter('colorOrder', plotlab.defaultColorOrder, @isnumeric);
    p.addParameter('lightTheme','light', @(x)((ischar(x))&&(ismember(x, {'light', 'dark'}))));
    p.addParameter('legendOnWhiteBackground', false, @islogical);
