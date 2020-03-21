@@ -10,21 +10,22 @@ function applyRecipe(varargin)
    p.addParameter('figureHeightInches', 4.0, @(x)(isnumeric(x)));
    p.parse(varargin{:});
    
-   
    % New plotting params do not go into effect if there are open figures.
    close all;
    
    % Reset all default graphics parameters
    plotlab.resetAllDefaults();
  
-   % Default color order
-   plotlab.setDefaultColorOrder('rgbColors', p.Results.colorOrder);
-   
+   % Apply plotlab's default recipe
+
    % Figure renderer: Painters for better 2D graphics
    set(groot, 'defaultFigureRenderer', 'painters');
    
    % Figure backround color default
    set(groot, 'defaultFigureColor', [1 1 1]);
+   
+   % Color order
+   plotlab.setDefaultColorOrder('rgbColors', p.Results.colorOrder);
    
    % Line plot defaults
    set(groot, 'defaultLineLineWidth', 2);
@@ -83,7 +84,7 @@ function applyRecipe(varargin)
        'height',p.Results.figureHeightInches ...
        );
       
-   % If the recipe name is a function handle, execute that function handle
+   % If a customRecipeFunction is passed, execute that function handle
    if (isa(p.Results.customRecipeFunction,'function_handle'))
        p.Results.customRecipeFunction();
        return;

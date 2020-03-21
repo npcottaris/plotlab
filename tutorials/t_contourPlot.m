@@ -35,7 +35,7 @@ function t_contourPlot
         fill(x,y, color, 'EdgeColor', color, 'FaceAlpha', 0.3);
     end
     
-    transparentContourPlot(...
+    plotlab.transparentContourPlot(gca,...
         psfStruct.xSupport, psfStruct.ySupport,...
         psfStruct.psf, zLevels, outlinedLevels, cMap);
     
@@ -47,8 +47,8 @@ function t_contourPlot
     xlabel('\it space (arc min)'); 
     ylabel('\it space (arc min)'); 
 
-    set(gca, 'CLim', [0 1], 'XLim', [-30 30], 'XTick', -30:10:30, ...
-        'YLim', [-30 30], 'YTick', -30:10:30);
+    set(gca, 'CLim', [0 1], 'XLim', [-3 3], 'XTick', -3:1:3, ...
+        'YLim', [-3 3], 'YTick', -3:1:3);
     
     % No box, add grid
     box off; grid on; axis 'square';
@@ -68,45 +68,9 @@ end
 function [coneMosaicStruct, psfStruct] = getData()
     load('mosaicPSFdata', 'coneMosaicStruct', 'wavePSF', 'xSupportMinutes', 'ySupportMinutes');
     psfStruct.psf = wavePSF/max(wavePSF(:));
-    psfStruct.xSupport = xSupportMinutes*1e6;
-    psfStruct.ySupport = ySupportMinutes*1e6;
-    coneMosaicStruct.coneLocs = coneMosaicStruct.coneLocs*300;
-    coneMosaicStruct.coneApertures = coneMosaicStruct.coneApertures*1500;
+    psfStruct.xSupport = xSupportMinutes*1e5;
+    psfStruct.ySupport = ySupportMinutes*1e5;
+    coneMosaicStruct.coneLocs = coneMosaicStruct.coneLocs*30;
+    coneMosaicStruct.coneApertures = coneMosaicStruct.coneApertures*150;
 end
  
-function transparentContourPlot(xSupport, ySupport, zData, zLevels, outlinedLevels, cmap)
-    C = contourc(xSupport, ySupport, zData, zLevels);
-    dataPoints = size(C,2);
-    startPoint = 1;
-    hold on;
-    while (startPoint < dataPoints)
-        theLevel = C(1,startPoint);
-        theLevelVerticesNum = C(2,startPoint);
-        x = C(1,startPoint+(1:theLevelVerticesNum));
-        y = C(2,startPoint+(1:theLevelVerticesNum));
-        v = [x(:) y(:)];
-        f = 1:numel(x);
-       patch('Faces', f, 'Vertices', v, ...
-                'FaceColor', cmap(round(theLevel*size(cmap,1)),:), ...
-                'EdgeColor', 'none');
-        
-        startPoint = startPoint + theLevelVerticesNum+1;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-    end
-    
-    startPoint = 1;
-    hold on;
-    while (startPoint < dataPoints)
-        theLevel = C(1,startPoint);
-        theLevelVerticesNum = C(2,startPoint);
-        x = C(1,startPoint+(1:theLevelVerticesNum));
-        y = C(2,startPoint+(1:theLevelVerticesNum));
-        v = [x(:) y(:)];
-        f = 1:numel(x);
-        if (any(outlinedLevels == theLevel))
-            patch('Faces', f, 'Vertices', v, ...
-                'FaceColor', 'none');
-        end
-        startPoint = startPoint + theLevelVerticesNum+1;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-    end
-    
-end

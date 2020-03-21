@@ -19,25 +19,28 @@ classdef plotlab
         %% Method to reset all default properties to their factory values
         resetAllDefaults();
         
-        %% Recipe methods that set a number of properties to achieve a desired type of plot
+        %% Method to display all default&factory graphics root object properties (and their values) that contain the refString in their name
+        displayPropertiesReferringTo(refString);
+        
+        %% Geteway to different plotting recipes which alter the default graphics root object properties
         applyRecipe(varargin);
         
-        %% Methods for setting individual properties
+        %% Methods for setting individual graphics root properties
         % Set the default color order
         setDefaultColorOrder(varargin); 
         
         % Set the default figure size
         setDefaultFigureSize(varargin);
         
+        %% Methods to achieve renderings not controlled by the different properties of the graphics root object
         % Offset the axes
         offsetAxes(axesHandle, varargin);
         
         % Draw the outlines of a bar plot
         barOutline(x,y);
         
-        % Display all default&factory properties (and their values)
-        % that contain the refString in their name
-        displayPropertiesReferringTo(refString);
+        % Render a semitrasparent contour plot
+        transparentContourPlot(axesHandle, xSupport, ySupport, zData, zLevels, outlinedLevels, cmap)
         
         % Return the property names of type = {'default', 'factory'}, that
         % contain the refString in their name
