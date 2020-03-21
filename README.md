@@ -62,7 +62,7 @@ set(gca, 'XLim', [0.1 100], ,...
 </table>
 
 ## The plotlab solution
-`plotlab` contains functionality that is engaged before issuing any Matlab plotting commands and which overrides plotting parameters from their factory settings to the settings preferred by the user so as to achieve a preferred look. This is done by calling the `plotlab.applyRecipe()` method. The new plotting parameters are in effect for the current Matlab session, or until the user issues a new call to the `applyRecipe()` method. The overriden plotting parameters are erased once the user exits the current Matlab session.
+`plotlab` contains functionality that is engaged before issuing any Matlab plotting commands and which overrides plotting parameters from their factory settings to the settings preferred by the user so as to achieve a preferred look. This is done by calling the `applyRecipe()` method of the `@plotlab` object. The new plotting parameters are in effect for the current Matlab session, or until the user issues a new call to the `applyRecipe()` method. The overriden plotting parameters are erased once the user exits the current Matlab session.
 
 There are 3 different ways that the user can override the plotting parameter values set by `applyRecipe()`:
 1. by passing key-value pair arguments in the `applyRecipe()` method. This is a good choice if the user likes most of the choices in `plotlab`s default recipe and only wishes to modify a few individual parameters.
