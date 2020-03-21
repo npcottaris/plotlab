@@ -69,7 +69,7 @@ There are 3 different ways that the user can override the plotting parameter val
 - second, by passing a function handle to a private recipe that is included in the user's script
 - third, by passing a function handle to one of the recipe files included in `plotlab`s `recipes` directory. A recipe file can include several recipe functions and the user can select which one to apply.
 
-In the table below, the the first override method is used, accepting the default `plotlab` recipe and only overriding the figure size. The resulting plot is depicted in the right column. Comparison to Matlab's default plot (depicted in the table above) shows the drastic enhancement in visual appeal and legibility offered by `plotlab`.
+In the table below, the first override method is used, thereby accepting the default `plotlab` recipe and only overriding the figure size. The resulting plot is depicted in the right column. Comparison to Matlab's default plot (depicted in the table above) shows the drastic enhancement in visual appeal and legibility offered by `plotlab`.
 
 <table>
 <tr>
@@ -79,7 +79,7 @@ In the table below, the the first override method is used, accepting the default
 <td>
 <pre lang="matlab">
 % Apply a desired plotlab recipe
-plotlab.applyRecipe(, ...
+plotlab.applyRecipe( ...
   'figureWidthInches', 6, ...
   'figureHeightInches', 5);
 %    
