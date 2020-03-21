@@ -1,14 +1,12 @@
 # plotlab
 ## Automatic generation of visually-engaging Matlab plots 
 
-```plotlab``` is a toolbox for the automatic generation of publication quality Matlab plots. The approach followed is to define 'recipes' which override various default plotting properties of the Matlab graphics root object, so as to generate plot that
+```plotlab``` is a toolbox for the automatic generation of publication quality Matlab plots. The approach followed is to define 'recipes' which override various default plotting properties of the Matlab graphics root object, so as to generate plot that:
 - are visually-engaging, 
 - are publication-ready,
-- have a consistent appearance across computing platforms (mac/linux) and across graphics formats (vector/raster).
+- have a consistent appearance across operating systems (mac/linux) and graphics formats (vector/raster).
 
-This approach minimizes the classic paradigm of repeatedly entering boiler plate code for setting various plotting options to one's liking. 
-
-`Plotlab` includes several tutorials that show examples of setting default plotting parameters for a number of plot types. Plot ge that result in publication quality, highly legible and visually engaging figures that have a consistent appearance across computing platforms (mac and linux) and graphics formats.
+This approach minimizes the classic paradigm of repeatedly entering boiler plate code for setting various plotting options to one's liking. `Plotlab` includes several tutorials that show examples of setting default plotting parameters for a number of plot types. Plot ge that result in publication quality, highly legible and visually engaging figures that have a consistent appearance across computing platforms (mac and linux) and graphics formats.
 
 ## The problem addressed
 The left column in the table below depicts a simple MATLAB snippet used to generate a line/marker combo plot. The right column depicts the plot generated using this code. There are two main issues with this, and, in general, with all MATLAB default plot: illegibility, due to the small font size, the small symbol size, the the line thickness, and a lack of visual appeal. 
