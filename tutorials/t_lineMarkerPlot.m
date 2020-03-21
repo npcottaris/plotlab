@@ -1,4 +1,4 @@
-function demoLineMarkerPlot()
+function t_lineMarkerPlot()
     
     % Get the data
     [sf, s, c, r, sfModel, sModel, cModel, rModel, b] = getData();
@@ -6,7 +6,7 @@ function demoLineMarkerPlot()
     % Set the desired defaults
     plotlab.applyRecipe(...
         'figureWidthInches', 6, ...
-        'figureHeightInches', 5);
+        'figureHeightInches', 6);
     
     % New figure
     hFig = figure(1); clf; hold on;

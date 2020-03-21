@@ -1,4 +1,4 @@
-function demoAreaPlotWithInternalRecipe
+function t_areaPlotUsingPrivateRecipe
 
     [space, centerRFprofile, surroundRFprofile, subunits] = getData();
     
@@ -6,7 +6,10 @@ function demoAreaPlotWithInternalRecipe
     colors = cat(1, colors, repmat([0.2 0.2 0.2], [size(subunits,2) 1]));
     
     % Apply the recipe included in this file
-    plotlab.applyRecipe('customRecipeFunction', @()internalRecipe(colors));
+    plotlab.applyRecipe(...
+        'customRecipeFunction', @()internalRecipe(colors), ...
+        'figureWidthInches', 6, ...
+        'figureHeightInches', 6);
     
     % New figure
     hFig = figure(1); clf; hold on;

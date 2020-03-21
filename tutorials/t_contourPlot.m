@@ -1,4 +1,4 @@
-function demoContourPlot
+function t_contourPlot
     [coneMosaicStruct, psfStruct] = getData();
     
     zLevels = 0.01:0.01:0.99;
@@ -6,8 +6,8 @@ function demoContourPlot
     
     cMap = brewermap(numel(zLevels), 'greys');
     plotlab.applyRecipe(...
-        'figureWidthInches', 6, ...
-        'figureHeightInches', 6);
+        'figureWidthInches', 6.2, ...
+        'figureHeightInches', 6.2);
     
     set(groot, 'defaultPatchEdgeColor', [0 0 0]);
     set(groot, 'defaultPatchEdgeAlpha',1);

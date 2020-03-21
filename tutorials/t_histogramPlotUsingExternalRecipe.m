@@ -1,4 +1,4 @@
-function demoHistogramPlotWithExternalRecipe()
+function t_histogramPlotUsingExternalRecipe()
 
     % Get the data
     [time, neuron1PSTH, neuron2PSTH] = getData();
@@ -15,8 +15,8 @@ function demoHistogramPlotWithExternalRecipe()
     % Apply that recipe
     plotlab.applyRecipe(...
         'customRecipeFunction', @()whichExternalRecipe(neuronColors), ...
-        'figureWidthInches', 6, ...
-        'figureHeightInches', 5);
+        'figureWidthInches', 8, ...
+        'figureHeightInches', 6);
     
     % New figure
     hFig = figure(1); clf;

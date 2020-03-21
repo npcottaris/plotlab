@@ -1,4 +1,4 @@
-function demoAreaPlot
+function t_areaPlot
 
     [L_absorbance, M_absorbance, S_absorbance, lambda] = getData();
     
