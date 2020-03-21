@@ -46,7 +46,7 @@ function demoAreaPlotWithInternalRecipe
     % Export to PDF
     print(hFig, fName, '-dpdf', '-r300');
     
-    % Export to PNG
+    % Export to TIFF
     print(hFig, fName, '-dpng', '-r300');
 end
 

@@ -1,14 +1,14 @@
-function applyRecipe(recipeName,varargin)
+function applyRecipe(varargin)
 
    % Parse input
    p = inputParser;
-   p.addRequired('recipeName', @(x)((isempty(x))||(isa(x,'function_handle'))));
+   p.addParameter('customRecipeFunction', [], @(x)((isempty(x))||(isa(x,'function_handle'))));
    p.addParameter('colorOrder', plotlab.defaultColorOrder, @isnumeric);
    p.addParameter('lightTheme','light', @(x)((ischar(x))&&(ismember(x, {'light', 'dark'}))));
    p.addParameter('legendOnWhiteBackground', false, @islogical);
    p.addParameter('figureWidthInches',  6.0, @(x)(isnumeric(x)));
    p.addParameter('figureHeightInches', 4.0, @(x)(isnumeric(x)));
-   p.parse(recipeName, varargin{:});
+   p.parse(varargin{:});
    
    
    % New plotting params do not go into effect if there are open figures.
@@ -84,8 +84,8 @@ function applyRecipe(recipeName,varargin)
        );
       
    % If the recipe name is a function handle, execute that function handle
-   if (isa(p.Results.recipeName,'function_handle'))
-       p.Results.recipeName();
+   if (isa(p.Results.customRecipeFunction,'function_handle'))
+       p.Results.customRecipeFunction();
        return;
    end
 end

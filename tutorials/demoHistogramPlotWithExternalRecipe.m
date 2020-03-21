@@ -1,4 +1,4 @@
-function demoHistogramExternalRecipe()
+function demoHistogramPlotWithExternalRecipe()
 
     % Get the data
     [time, neuron1PSTH, neuron2PSTH] = getData();
@@ -14,7 +14,7 @@ function demoHistogramExternalRecipe()
     
     % Apply that recipe
     plotlab.applyRecipe(...
-        @()whichExternalRecipe(neuronColors), ...
+        'customRecipeFunction', @()whichExternalRecipe(neuronColors), ...
         'figureWidthInches', 6, ...
         'figureHeightInches', 5);
     
@@ -50,7 +50,7 @@ function demoHistogramExternalRecipe()
     % Export to PDF
     print(hFig, fName, '-dpdf', '-r300');
     
-    % Export to TIFF
+    % Export to PNG
     print(hFig, fName, '-dpng', '-r300');
     
 end

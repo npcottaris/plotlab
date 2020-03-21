@@ -4,7 +4,7 @@ function demoLineMarkerPlot()
     [sf, s, c, r, sfModel, sModel, cModel, rModel, b] = getData();
     
     % Set the desired defaults
-    plotlab.applyRecipe('',...
+    plotlab.applyRecipe(...
         'figureWidthInches', 6, ...
         'figureHeightInches', 5);
     
@@ -44,7 +44,7 @@ function demoLineMarkerPlot()
     % Export to PDF
     print(fName, '-dpdf', '-r300');
     
-    % Export to TIFF
+    % Export to PNG
     print(hFig, fName, '-dpng', '-r300');
 end
 

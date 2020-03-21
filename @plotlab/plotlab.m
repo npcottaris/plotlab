@@ -20,7 +20,7 @@ classdef plotlab
         resetAllDefaults();
         
         %% Recipe methods that set a number of properties to achieve a desired type of plot
-        applyRecipe(recipeName, varargin);
+        applyRecipe(varargin);
         
         %% Methods for setting individual properties
         % Set the default color order
