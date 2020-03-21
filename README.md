@@ -62,7 +62,7 @@ set(gca, 'XLim', [0.1 100], ,...
 </table>
 
 ## The plotlab solution
-`plotlab` contains functionality that is engaged before issuing any Matlab plotting commands so as to alter plotting parameters from their factory settings to the settings preferred by the user so as to achieve a preferred look. This alteration is done by calling the `plotlab.applyRecipe()` method, which changes several key parameters so as to improve the appearance of all types of plots. The user can override the parameter values set by `applyRecipe()` so as to achieve a different look in three different ways:
+`plotlab` contains functionality that is engaged before issuing any Matlab plotting commands and which overrides plotting parameters from their factory settings to the settings preferred by the user so as to achieve a preferred look. This is done by calling the `plotlab.applyRecipe()` method. The user can override the parameter values set by `applyRecipe()` in three different ways:
 - first, by passing key-value pair arguments in the `applyRecipe()` method. This is a good choice if the user likes most of the choices in `plotlab`s default recipe and only wishes to modify a few individual parameters.
 - second, by passing a function handle to a private recipe included in the user's script
 - third, by passing a function handle to one of the recipes files included in `plotlab`s `recipes` directory. A recipe file can include several recipe functions and the user can select which one to apply.
