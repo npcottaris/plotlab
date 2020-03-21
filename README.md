@@ -67,9 +67,9 @@ set(gca, 'XLim', [0.1 100], ,...
 There are 3 different ways that the user can override the plotting parameter values set by `applyRecipe()`:
 1. by passing key-value pair arguments in the `applyRecipe()` method. This is a good choice if the user likes most of the choices in `plotlab`s default recipe and only wishes to modify a few individual parameters.
 2. by passing a function handle to a private recipe that is included in the user's script
-3. by passing a function handle to one of the recipe files included in `plotlab`s `recipes` directory. A recipe file can include several recipe functions and the user can select which one to apply.
+3. by passing a function handle to one of the recipe files included in `plotlab`'s `recipes` directory. A recipe file can include several recipe functions and the user can select which one to apply.
 
-In the table below, override method no. 1 is used, thereby accepting the default `plotlab` recipe and only overriding the figure size. The resulting plot is depicted in the right column. Comparison to Matlab's default plot (depicted in the table above) shows the drastic enhancement in visual appeal and legibility offered by `plotlab`.
+In the table below, override method no. 1 is used, thereby accepting the default `plotlab` recipe and only overriding the figure size. The resulting plot is depicted in the right column. Comparison to Matlab's default plot (depicted in the table above) shows the drastic enhancement in visual appeal and legibility offered by the default recipe of `plotlab`.
 
 <table>
 <tr>
@@ -79,7 +79,7 @@ In the table below, override method no. 1 is used, thereby accepting the default
 <td>
 <pre lang="matlab">
 % Apply a desired plotlab recipe
-plotlab.applyRecipe( ...
+plotlab.applyRecipe(...
   'figureWidthInches', 6, ...
   'figureHeightInches', 5);
 %    
@@ -94,7 +94,7 @@ plotlab.applyRecipe( ...
 </td>
 </table>
 
-Completely customized plots can be obtained by the overriding methods no. 2 and no. 3, which pass recipe function handles to the `applyMethod()`. In override method no. 2, the user writes a private recipe in the same script as the main plotting code. This can be a good option if the user does not want to include the recipe in the `recipes` directory, or if the particular recipe is only used once. In override method no. 3, the user selects one of the available pre-configured recipes in the `recipes` directory. Users can add their own recipes in the `recipes`  directory for repeated use in different scripts and/or for sharing with other users.
+Completely customized plots can be obtained by using overriding methods no. 2 and no. 3, which pass recipe function handles to the `applyRecipe()` method. In override method no. 2, the user codes a private recipe as an internal function in the same script as the plotting code. This can be a good option if the user does not want to include the recipe in the `recipes` directory, or if the particular recipe is only used once. In override method no. 3, the user selects one of the available pre-configured recipes in the `recipes` directory. Users can add their own recipes in the `recipes`  directory for repeated use in different scripts and/or for sharing with other users.
 
 The code below shows an example of how to use an external recipe, here the second recipe contained in the `\recipes\PSTHrecipe.m` file.
 
@@ -124,7 +124,7 @@ plotlab.applyRecipe(...
 The `tutorials` directory contains tutorials that show different ways of using `plotlab` to enhance a variety of plot types. 
 
 # Additional capabilities
-
+`plotlab` also contains plotting scipts for generating more complex plot types. These are static method in the `@plotlab` object.
 
 ## plotlab gallery
 
