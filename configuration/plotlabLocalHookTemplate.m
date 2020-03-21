@@ -1,7 +1,6 @@
 % plotlabLocalHookTemplate
 %
-% Template for setting preferences and other configuration things, for
-% plotlab
+% Template for setting preferences and other configurations for plotlab.
 
 % 03/19/2020  NPC   Wrote it.
 
@@ -12,7 +11,6 @@ toolboxName = 'plotlab';
 if (ispref(toolboxName))
     rmpref(toolboxName);
 end
-
 
 %% Specify project location
 plotlabBaseDir = tbLocateToolbox('plotlab');
