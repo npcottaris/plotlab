@@ -99,7 +99,7 @@ Completely customized plots can be obtained by using overriding methods no. 2 an
 The code below shows an example of how to use an external recipe, here the second recipe contained in the `\recipes\PSTHrecipe.m` file.
 
 ```
-% Apply one of the receipes located in file 'PSTHrecipe.m'
+% Get handles to all the recipe functions included in file 'PSTHrecipe.m'
 externalRecipes = PSTHrecipes;
     
 % Let's go with the second recipe
@@ -107,7 +107,7 @@ whichExternalRecipe = externalRecipes{2};
     
 % How to color the neuron responses. This
 % matrix is passed as an input argument to
-% the external recipe.
+% the chosen recipe function handle.
 neuronColors = [...
    0.3 0.3 0.5; ...  % neuron 1 in gray
    1 0.2 0.2 ...     % neuron 2 in pinkish-red
