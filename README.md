@@ -123,15 +123,13 @@ plotlab.applyRecipe(...
 ## Tutorials
 The `tutorials` directory contains tutorials that show different ways of using `plotlab` to enhance a variety of plot types. 
 
-## Writing recipes
-`plotlab` also contains utility scripts to help writing new recipe functions. These are static methods in the `@plotlab` object. 
-
-As of MATLAB version 2019B, the graphics root object contains around 2,000 properties that control the appearance of different plots. Going through all of them to find the one that controls a particular aspect of a plot can be daunting. The `displayPropertiesReferringTo()` method can be used to find these properties fast. For example, to find out which properties contol the line width, type the following in the command window.
+## Writing recipe funcions
+As of MATLAB version 2019B, the graphics root object contains around 2,000 properties that control the appearance of different plots. Going through all of them to find the one that controls a particular aspect of a plot can be daunting. The `plotlab.displayPropertiesReferringTo()` method can be used to find these properties fast. For example, to find out which properties contol the line width, type the following in the command window.
 ```
 plotlab.displayPropertiesReferringTo('LineWidth');
 ```
 The method returns all properties that contain the `LineWidth` string in their names, along with their factory values.
-The method also returns any properties containing that string that the user has overriden their default value in the current session. Below is the output of the above command in a fresh Matlab session.
+The method also returns any properties containing that string and which the user has overriden their default value in the current session. Below is the output of the above command in a fresh Matlab session.
 ```
 >> plotlab.displayPropertiesReferringTo('LineWidth');
 
@@ -180,7 +178,7 @@ Found 0 *default* properties with a reference to 'LineWidth'.
 ```
 
 ## Additional capabilities
-`plotlab` also contains scripts for altering the look of graphs beyond what can be achieved by the graphics root object properties, or for generating more complex plots. For example `plotlab.offsetAxes(gca)` offsets the x and y axes by a specified percent of their range (3% by default) to help visualizing data points that lie close to the axes, and `plotlab.transparentContourPlot()` can be used to generate contour plots that are semitransparent.
+`plotlab` also contains scripts for altering the look of plots beyond what can be achieved by setting the graphics root object properties, or for generating more complex plots. For example `plotlab.offsetAxes(gca)` offsets the x and y axes by a specified percent of their respective range (3% by default) to help visualizing data points that lie close to the axes, and `plotlab.transparentContourPlot()` can be used to generate contour plots that are semitransparent.
 
 # plotlab gallery
 
