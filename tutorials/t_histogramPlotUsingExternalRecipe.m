@@ -24,7 +24,7 @@ function t_histogramPlotUsingExternalRecipe()
     bar(time,  neuron2PSTH, 1);
     plotlab.barOutline(time, neuron1PSTH);
     plotlab.barOutline(time, neuron2PSTH);
-    
+   
     % Legend
     legend({'neuron-A', 'neuron-B'}, 'Location', 'NorthEast');
 
@@ -36,23 +36,13 @@ function t_histogramPlotUsingExternalRecipe()
 
     set(gca, 'XLim', [0 500], 'XTick', 0:100:500, ...
         'YLim', [-50 125], 'YTick', [-50:25:200]);
-    % No box, add grid
-    box off; grid on
-    
+
     % Offset the axes 
     plotlab.offsetAxes(gca);
+    box 'off';
     
-    
-    % Get gallery directory
-    p = getpref('plotlab');
-    fName = fullfile(p.galleryDir, 'PSTHhistogram');
-    
-    % Export to PDF
-    print(hFig, fName, '-dpdf', '-r300');
-    
-    % Export to PNG
-    print(hFig, fName, '-dpng', '-r300');
-    
+    % Export the figure to the gallery directory in PNG format
+    plotlab.exportFig(hFig, 'png', 'PSTHhistogram', 'gallery');
 end
 
 function [time, neuron1PSTH, neuron2PSTH] = getData()

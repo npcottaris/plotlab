@@ -25,6 +25,9 @@ classdef plotlab
         %% Geteway to different plotting recipes which alter the default graphics root object properties
         applyRecipe(varargin);
         
+        %% Method to export figure
+        exportFig(hFig, graphicFormat, fileName, fileDir);
+        
         %% Methods for setting individual graphics root properties
         % Set the default color order
         setDefaultColorOrder(varargin); 

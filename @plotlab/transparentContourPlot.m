@@ -1,5 +1,8 @@
 function transparentContourPlot(axesHandle, xSupport, ySupport, zData, zLevels, outlinedLevels, cmap)
 
+    minZ = min(zLevels);
+    maxZ = max(zLevels);
+    cmapLength = size(cmap,1);
     hold(axesHandle, 'on');
     
     % Compute contours at all levels
@@ -10,13 +13,15 @@ function transparentContourPlot(axesHandle, xSupport, ySupport, zData, zLevels, 
     startPoint = 1;
     while (startPoint < dataPoints)
         theLevel = C(1,startPoint);
+        theCMapIndex = round((theLevel-minZ)/(maxZ-minZ)*cmapLength);
+        theCMapIndex = min([cmapLength max([1 theCMapIndex])]);
         theLevelVerticesNum = C(2,startPoint);
         x = C(1,startPoint+(1:theLevelVerticesNum));
         y = C(2,startPoint+(1:theLevelVerticesNum));
         v = [x(:) y(:)];
         f = 1:numel(x);
         patch(axesHandle, 'Faces', f, 'Vertices', v, ...
-                'FaceColor', cmap(round(theLevel*size(cmap,1)),:), ...
+                'FaceColor', cmap(theCMapIndex,:), ...
                 'EdgeColor', 'none');
         
         startPoint = startPoint + theLevelVerticesNum+1;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
@@ -29,7 +34,6 @@ function transparentContourPlot(axesHandle, xSupport, ySupport, zData, zLevels, 
     % Edges for the outlined levels only
     startPoint = 1;
     while (startPoint < dataPoints)
-        theLevel = C(1,startPoint);
         theLevelVerticesNum = C(2,startPoint);
         x = C(1,startPoint+(1:theLevelVerticesNum));
         y = C(2,startPoint+(1:theLevelVerticesNum));

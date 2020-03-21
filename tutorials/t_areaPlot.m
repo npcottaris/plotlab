@@ -32,21 +32,11 @@ function t_areaPlot
     xlabel('\it wavelength (nm)'); ylabel('\it normalized absorbance');
 
     set(gca, 'XLim', [400 700], 'XTick', 350:50:850, ...
-        'YLim', [minAbsorbance 1.0], 'YTick', [0.01 0.03 0.1 0.3 1], 'YScale', 'log')
+        'YLim', [minAbsorbance 1.0], 'YTick', [0.01 0.03 0.1 0.3 1], ...
+        'YScale', 'log');
     
-    % No box, add grid
-    box off; grid on
-    
-
-    % Get gallery directory
-    p = getpref('plotlab');
-    fName = fullfile(p.galleryDir, 'SSnomograms');
-    
-    % Export to PDF
-    print(hFig, fName, '-dpdf', '-r300');
-    
-    % Export to PNG
-    print(hFig, fName, '-dpng', '-r300');
+    % Export the figure to the gallery directory in PNG format
+    plotlab.exportFig(hFig, 'png', 'SSnomograms', 'gallery');
 end
 
 function [L_absorbance, M_absorbance, S_absorbance, lambda] = getData()

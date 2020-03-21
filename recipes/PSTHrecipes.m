@@ -16,5 +16,6 @@ function secondRecipe(colors)
    set(groot, 'defaultBarFaceColor', 'flat');
    set(groot, 'defaultBarEdgeAlpha', 0.0);
    set(groot, 'defaultLineLineWidth', 1.5);
+   set(groot, 'defaultAxesTickDir', 'in');
 end
 

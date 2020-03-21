@@ -33,6 +33,7 @@ function applyRecipe(varargin)
    set(groot, 'defaultLineMarkerFaceColor', [0.75 0.75 0.75]);
    
    % Scatter plot defaults
+   set(groot, 'defaultScatterMarker', 'o');
    set(groot, 'defaultScatterMarkerFaceColor', 'flat');
    set(groot, 'defaultScatterMarkerFaceAlpha', 0.4);
    set(groot, 'defaultScatterLineWidth', 1.5);
