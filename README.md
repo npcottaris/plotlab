@@ -9,7 +9,9 @@
 This approach minimizes the classic paradigm of repeatedly entering boilerplate code for setting various plotting options to one's liking. `Plotlab` includes several tutorials that show different ways of setting default parameters for a number of plot types.
 
 ## The problem addressed
-The left column in the table below depicts a simple MATLAB snippet used to generate a line/marker combo plot. The right column depicts the plot generated using this code. There are two main issues with this, and, in general, with all MATLAB default plot: illegibility, due to the small font size, the small symbol size, the the line thickness, and a lack of visual appeal. 
+The left column in the table below depicts a simple MATLAB snippet used to generate a line/marker combo plot. The right column depicts the plot generated using this code. There are two main issues with this, and, in general, with all the default MATLAB plots: 
+- illegibility, due to the small font size, the small symbol size, the line thickness, and
+- an overall lack of visual appeal
 
 <table bgcolor=>
 <tr>
