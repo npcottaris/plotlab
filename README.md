@@ -62,7 +62,12 @@ set(gca, 'XLim', [0.1 100], ,...
 </table>
 
 ## The plotlab solution
-`plotlab` contains functionality that is called before a generic matlab plotting script so as to alter the various default plotting parameters according to the user's liking. This alteration is done by calling the `plotlab.applyRecipe()` method as shown in the left column of the table below. This method sets a number of plotting parameters to values different that the factory values, so as to improve the legibility and the visual appeal of the generated plot. The user of course can override the values of these parameters in three different ways. The first way is by passing key-value pair arguments in the `applyRecipe()` method. In the table below, the user sets only the desired figure size, accepting the values of the remaining plotting parameters set by the default receipt of `plotlab`, which again was designed with the aim of improving the visual appeal of plots. The resulting plot is depicted in the right column. 
+`plotlab` contains functionality that is engaged before issuing any Matlab plotting commands so as to alter plotting parameters from their factory settings to the settings preferred by the user so as to achieve a preferred look. This alteration is done by calling the `plotlab.applyRecipe()` method, which changes several key parameters so as to improve the appearance of all types of plots. The user can override the parameter values set by `applyRecipe()` so as to achieve a different look in three different ways:
+- first, by passing key-value pair arguments in the `applyRecipe()` method. This is a good choice if the user likes most of the choices in `plotlab`s default recipe and only wishes to modify a few individual parameters.
+- second, by passing a function handle to a private recipe included in the user's script
+- third, by passing a function handle to one of the recipes files included in `plotlab`s `recipes` directory. A recipe file can include several recipe functions and the user can select which one to apply.
+
+In the table below, the user uses the first override method, accepting the default `plotlab` recipe and only overriding the figure size. The resulting plot is depicted in the right column. Comparison to Matlab's default plot (depicted in the table above) shows the drastic enhancement in visual appeal and legibility offered by `plotlab`.
 
 <table>
 <tr>
