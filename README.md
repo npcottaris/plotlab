@@ -1,3 +1,4 @@
+![Logo](assets/plotlabLogo.png)
 # plotlab
 ## Automatic generation of visually-engaging Matlab plots 
 
