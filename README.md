@@ -2,11 +2,9 @@
 ![Logo](assets/plotlabLogo.png)
 ## Automatic generation of visually-engaging Matlab plots 
 
-```plotlab``` is a toolbox for the automatic generation of publication quality Matlab plots. The approach followed is to define 'recipes' which override various default plotting properties of the Matlab graphics root object, so as to generate plot that:
-- are visually-engaging and publication-ready,  and
-- have a consistent appearance across operating systems (mac/linux) and graphics formats (vector/raster).
+```plotlab``` is a toolbox for the automatic generation of publication quality Matlab plots. The approach followed is to define 'recipes' which override various default plotting properties of the Matlab graphics root object, so as to generate plots that are visually-engaging and publication-ready, with a consistent appearance across operating systems (mac/linux) and graphics formats (vector/raster).
 
-This paradigm minimizes the amount of boilerplate code for setting various plotting options and generates beautiful plots with just a few generic plotting commands that can be even entered from the command window. `plotlab` includes several tutorials that demonstrate the different ways with  which one can override the default parameters for different plot types.
+This paradigm minimizes the amount of boilerplate code for setting various plotting options and offer  different ways to generate beautiful plots with just a few generic plotting commands, even from the command window. `plotlab` includes several tutorials that demonstrate the different ways with  which one can override the default parameters for different plot types.
 
 ## The problem addressed
 The left column in the table below depicts a simple MATLAB snippet used to generate a line/marker combo plot. The right column depicts the plot generated using this code. There are two main issues with this, and, in general, with all the default MATLAB plots: 
@@ -62,7 +60,7 @@ set(gca, 'XLim', [0.1 100], ,...
 </table>
 
 ## The plotlab solution
-`plotlab` contains functionality that is engaged before issuing any Matlab plotting commands and which overrides plotting parameters from their factory settings to the settings preferred by the user so as to achieve a preferred look. This is done by calling the `applyRecipe()` method of the `@plotlab` object. The new plotting parameters are in effect for the current Matlab session, or until the user issues a new call to the `applyRecipe()` method. The overriden plotting parameters are erased once the user exits the current Matlab session.
+`plotlab` contains functionality that is engaged before issuing any Matlab plotting commands and which overrides plotting parameters from their factory settings to the settings preferred by the user so as to achieve a preferred look. This is done by calling the `applyRecipe()` method of the `@plotlab` object. The  override of the plotting parameters remains in effect for the current Matlab session, or until a new call to the `applyRecipe()` method  is issued, and is reversed once the user exits the current Matlab session.
 
 There are 3 different ways that the user can override the plotting parameter values set by `applyRecipe()`:
 1. by passing key-value pair arguments in the `applyRecipe()` method. This is a good choice if the user likes most of the choices in the default recipe of `plotlab` and only wishes to modify a few individual parameters.
