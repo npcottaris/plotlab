@@ -179,8 +179,8 @@ Found 0 *default* properties with a reference to 'LineWidth'.
 `plotlab` also contains scripts for altering the look of plots beyond what can be achieved by setting the graphics root object properties, or for generating more complex plots. For example `plotlab.offsetAxes(gca)` offsets the x and y axes by a specified percent of their respective range (3% by default) to help visualizing data points that lie close to the axes, and `plotlab.transparentContourPlot()` can be used to generate contour plots that are semitransparent.
 
 ## Installation
-To download using ToolboxToolbox: run `tbUse('plotlab')` from the command window.
-To install: run `plotlabLocalHookTemplate()` from the command window.
+* to download using ToolboxToolbox: run `tbUse('plotlab')` from the command window.
+* to install: run `plotlabLocalHookTemplate()` from the command window.
 
 # plotlab gallery
 
