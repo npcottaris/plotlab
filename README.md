@@ -122,12 +122,12 @@ plotlab.applyRecipe(...
 The `tutorials` directory contains tutorials that show different ways of using `plotlab` to enhance a variety of plot types. 
 
 ## Writing recipe funcions
-As of MATLAB version 2019B, the graphics root object contains around 2,000 properties that control the appearance of different plots. Going through all of them to find the one that controls a particular aspect of a plot can be daunting. The `plotlab.displayPropertiesReferringTo()` method can be used to find these properties fast. For example, to find out which properties contol the line width, type the following in the command window.
+As of MATLAB version 2019B, the graphics root object contains around 2,000 properties that control the appearance of different plots. Going through all of them to find the one that controls a particular aspect of a plot can be daunting. The `plotlab.displayPropertiesReferringTo()` method can be used to find the relevant properties fast. For example, to find properties that contol the line width of a plot, type the following in the command window.
 ```
 plotlab.displayPropertiesReferringTo('LineWidth');
 ```
 The method returns all properties that contain the `LineWidth` string in their names, along with their factory values.
-The method also returns any properties containing that string and which the user has overriden their default value in the current session. Below is the output of the above command in a fresh Matlab session.
+The method also returns any properties containing that string that the user has overriden their default value in the current session. Below is the output of the above command in a fresh Matlab session.
 ```
 >> plotlab.displayPropertiesReferringTo('LineWidth');
 
