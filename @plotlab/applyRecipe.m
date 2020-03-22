@@ -100,8 +100,8 @@ function invertColors(obj)
     obj.lightTheme = 'dark';
     set(groot, 'defaultFigureInvertHardcopy', 'off');
      
-    % Invert colros in the AxesColorOrder list
-    colorParameters = {...
+    % Invert color-related default parameters 
+    colorRelaredParameters = {...
         'AxesColorOrder' ...
         'FigureColor' ...
         'AxesColor' ...
@@ -121,8 +121,8 @@ function invertColors(obj)
         'AreaFaceColor' ...
         };
     
-    for k = 1:numel(colorParameters)
-        defaultParamName = sprintf('default%s', colorParameters{k});
+    for k = 1:numel(colorRelaredParameters)
+        defaultParamName = sprintf('default%s', colorRelaredParameters{k});
         %fprintf('Inverting %s\n', defaultParamName);
         defaultValue = get(groot, defaultParamName);
         if (isnumeric(defaultValue))
