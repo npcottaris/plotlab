@@ -176,6 +176,16 @@ Found 0 *default* properties with a reference to 'LineWidth'.
 ```
 
 ## Additional capabilities
+`plotlab` can automatically generare dark versions of all plots, simply by setting the light theme to dark when calling the `applyRecipe` method, for example:
+```
+plotlabOBJ.applyRecipe(...
+   'customRecipeFunction', @privateRecipe, ...
+   'lightTheme', 'dark', ...
+   'figureWidthInches', 6.2, ...
+   'figureHeightInches', 6.2);
+```
+An example of a light/dark pair of automatically generated plots is shown in the gallery table below.
+
 `plotlab` also contains scripts for altering the look of plots beyond what can be achieved by setting the graphics root object properties, or for generating more complex plots. For example `plotlab.offsetAxes(gca)` offsets the x and y axes by a specified percent of their respective range (3% by default) to help visualizing data points that lie close to the axes, and `plotlab.transparentContourPlot()` can be used to generate contour plots that are semitransparent.
 
 ## Installation
