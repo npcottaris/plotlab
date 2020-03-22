@@ -100,18 +100,18 @@ The code below shows an example of how to use an external recipe, here the secon
 % Get handles to all the recipe functions included in file 'PSTHrecipe.m'
 externalRecipes = PSTHrecipes;
     
-% Let's go with the second recipe
+% Pick the second recipe
 whichExternalRecipe = externalRecipes{2};
     
 % How to color the neuron responses. This
 % matrix is passed as an input argument to
 % the chosen recipe function handle.
 neuronColors = [...
-   0.3 0.3 0.5; ...  % neuron 1 in gray
+   0.3 0.3 0.5; ...  % neuron 1 in grayish-blue
    1 0.2 0.2 ...     % neuron 2 in pinkish-red
    ];
    
-% Apply the chosen recipe passing the neuronColors as input argument
+% Apply the chosen recipe and pass the neuronColors as input argument
 plotlab.applyRecipe(...
    'customRecipeFunction', @()whichExternalRecipe(neuronColors), ...
    'figureWidthInches', 6, ...
