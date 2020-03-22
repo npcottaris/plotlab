@@ -1,14 +1,19 @@
 function t_areaPlot
-
+     % Get the demo data to plot
     [L_absorbance, M_absorbance, S_absorbance, lambda] = getData();
     
+    % Colors for the L-, M-, and S-cone nomograms
     LMSconeColors = [...
         1.0 0.2 0.4; ...
         0.1 1.0 0.4; ...
         0.5 0.1 0.8];
             
-    % Set the desired defaults
-    plotlab.applyRecipe(...
+    % Instantiate a plotlab object
+    plotlabOBJ = plotlab();
+    
+    % Apply the default plotlab recipe overriding 
+    % the color order and the figure size
+    plotlabOBJ.applyRecipe(...
         'colorOrder', LMSconeColors, ...
         'figureWidthInches', 6, ...
         'figureHeightInches', 6);
@@ -36,7 +41,7 @@ function t_areaPlot
         'YScale', 'log');
     
     % Export the figure to the gallery directory in PNG format
-    plotlab.exportFig(hFig, 'png', 'SSnomograms', 'gallery');
+    plotlabOBJ.exportFig(hFig, 'png', 'SSnomograms', 'gallery');
 end
 
 function [L_absorbance, M_absorbance, S_absorbance, lambda] = getData()

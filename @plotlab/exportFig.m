@@ -1,4 +1,4 @@
-function exportFig(hFig, graphicFormat, fileName, fileDir)
+function exportFig(obj, hFig, graphicFormat, fileName, fileDir)
 
     if (strcmp(fileDir, 'gallery'))
         p = getpref('plotlab');
@@ -6,6 +6,7 @@ function exportFig(hFig, graphicFormat, fileName, fileDir)
     else
         fName = fullfile(fileDir, fileName);
     end
+    fName = sprintf('%s-%s', fName, obj.lightTheme);
     print(hFig, fName, sprintf('-d%s', lower(graphicFormat)), '-r300');
 end
 

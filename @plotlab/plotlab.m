@@ -1,4 +1,4 @@
-classdef plotlab
+classdef plotlab < handle
 
     properties (Constant)
         defaultColorOrder = [
@@ -15,19 +15,34 @@ classdef plotlab
             ];
     end
     
+    properties (SetAccess=private)
+        lightTheme;
+    end
+    
+    methods
+        % Constructor
+        function obj = plotlab()
+            obj.lightTheme = 'light';
+        end
+        
+        %% Geteway to different plotting recipes which alter the default graphics root object properties
+        applyRecipe(obj, varargin);
+        
+        % Render a semitrasparent contour plot
+        transparentContourPlot(obj,axesHandle, xSupport, ySupport, zData, zLevels, outlinedLevels, contourLineColor, cmap);
+    
+        %% Method to export figure
+        exportFig(obj, hFig, graphicFormat, fileName, fileDir);
+    end
+    
+    
     methods (Static)
         %% Method to reset all default properties to their factory values
         resetAllDefaults();
         
         %% Method to display all default&factory graphics root object properties (and their values) that contain the refString in their name
         displayPropertiesReferringTo(refString);
-        
-        %% Geteway to different plotting recipes which alter the default graphics root object properties
-        applyRecipe(varargin);
-        
-        %% Method to export figure
-        exportFig(hFig, graphicFormat, fileName, fileDir);
-        
+ 
         %% Methods for setting individual graphics root properties
         % Set the default color order
         setDefaultColorOrder(varargin); 
@@ -42,14 +57,10 @@ classdef plotlab
         % Draw the outlines of a bar plot
         barOutline(x,y);
         
-        % Render a semitrasparent contour plot
-        transparentContourPlot(axesHandle, xSupport, ySupport, zData, zLevels, outlinedLevels, cmap)
-        
         % Return the property names of type = {'default', 'factory'}, that
         % contain the refString in their name
         matchingPropertyNames = findGraphicsProperties(type, refString, printNamesAndValues);
     end
-    
 
 end
 

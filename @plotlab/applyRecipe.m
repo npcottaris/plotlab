@@ -1,14 +1,15 @@
-function applyRecipe(varargin)
+function applyRecipe(obj, varargin)
 
    % Parse input
    p = inputParser;
+   p.addRequired('obj', @(x)isa(x, 'plotlab'));
    p.addParameter('customRecipeFunction', [], @(x)((isempty(x))||(isa(x,'function_handle'))));
    p.addParameter('colorOrder', plotlab.defaultColorOrder, @isnumeric);
    p.addParameter('lightTheme','light', @(x)((ischar(x))&&(ismember(x, {'light', 'dark'}))));
    p.addParameter('legendOnWhiteBackground', false, @islogical);
    p.addParameter('figureWidthInches',  6.0, @(x)(isnumeric(x)));
    p.addParameter('figureHeightInches', 4.0, @(x)(isnumeric(x)));
-   p.parse(varargin{:});
+   p.parse(obj, varargin{:});
    
    % New plotting params do not go into effect if there are open figures.
    close all;
@@ -88,6 +89,44 @@ function applyRecipe(varargin)
    % If a customRecipeFunction is passed, execute that function handle
    if (isa(p.Results.customRecipeFunction,'function_handle'))
        p.Results.customRecipeFunction();
-       return;
    end
+   
+   if (strcmp(p.Results.lightTheme, 'dark'))
+       invertColors(obj);
+   end
+end
+
+function invertColors(obj)
+    obj.lightTheme = 'dark';
+    set(groot, 'defaultFigureInvertHardcopy', 'off');
+     
+    % Invert colros in the AxesColorOrder list
+    colorParameters = {...
+        'AxesColorOrder' ...
+        'FigureColor' ...
+        'AxesColor' ...
+        'AxesXColor' ...
+        'AxesYColor' ...
+        'AxesGridColor' ...
+        'LineColor' ...
+        'LegendTextColor' ...
+        'ScatterMarkerEdgeColor' ...
+        'ScatterMarkerFaceColor' ...
+        'LineMarkerEdgeColor' ...
+        'LineMarkerFaceColor' ...
+        'LineColor' ...
+        'PatchEdgeColor' ...
+        'PatchFaceColor' ...
+        'AreaEdgeColor' ...
+        'AreaFaceColor' ...
+        };
+    
+    for k = 1:numel(colorParameters)
+        defaultParamName = sprintf('default%s', colorParameters{k});
+        %fprintf('Inverting %s\n', defaultParamName);
+        defaultValue = get(groot, defaultParamName);
+        if (isnumeric(defaultValue))
+            set(groot, defaultParamName, 1-defaultValue);
+        end
+    end
 end

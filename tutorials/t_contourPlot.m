@@ -1,8 +1,15 @@
 function t_contourPlot
+    % Get the demo data to plot
     [coneMosaicStruct, psfStruct] = getData();
     
-    plotlab.applyRecipe(...
+    % Instantiate a plotlab object
+    plotlabOBJ = plotlab();
+    
+    % Apply the private recipe included in this file
+    % using a light-theme and a custom figure size
+    plotlabOBJ.applyRecipe(...
         'customRecipeFunction', @privateRecipe, ...
+        'lightTheme', 'dark', ...
         'figureWidthInches', 6.2, ...
         'figureHeightInches', 6.2);
     
@@ -14,13 +21,14 @@ function t_contourPlot
     
     % Superimpose a transparent contour plot of the PSF
     zLevels = 0.01:0.01:0.99;
-    outlinedLevels = 0.05:0.1:0.95;
+    outlinedLevels = 0.03:0.1:0.95;
     cMap = brewermap(512, 'greys');
+    contourLineColor = [0 0 1];
     
-    plotlab.transparentContourPlot(gca,...
+    plotlabOBJ.transparentContourPlot(gca,...
         psfStruct.xSupport, psfStruct.ySupport,...
-        psfStruct.psf, zLevels, outlinedLevels, cMap);
-    
+        psfStruct.psf, zLevels, outlinedLevels, ...
+        contourLineColor, cMap);
     % Title
     title(sprintf('point spread function & cone mosaic'));
 
@@ -35,7 +43,7 @@ function t_contourPlot
     axis 'square';
  
     % Export the figure to the gallery directory in PNG format
-    plotlab.exportFig(hFig, 'png', 'PointSpreadFunction', 'gallery');
+    plotlabOBJ.exportFig(hFig, 'png', 'PointSpreadFunction', 'gallery');
 end
 
 function privateRecipe

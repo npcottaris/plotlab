@@ -1,5 +1,11 @@
-function transparentContourPlot(axesHandle, xSupport, ySupport, zData, zLevels, outlinedLevels, cmap)
+function transparentContourPlot(obj, axesHandle, xSupport, ySupport, zData, ...
+    zLevels, outlinedLevels, contourLineColor, cmap)
 
+    if (strcmp(obj.lightTheme, 'dark'))
+        cmap = 1 - cmap;
+        contourLineColor = 1-contourLineColor;
+    end
+    
     minZ = min(zLevels);
     maxZ = max(zLevels);
     cmapLength = size(cmap,1);
@@ -40,7 +46,7 @@ function transparentContourPlot(axesHandle, xSupport, ySupport, zData, zLevels, 
         v = [x(:) y(:)];
         f = 1:numel(x);
         patch(axesHandle, 'Faces', f, 'Vertices', v, ...
-                  'FaceColor', 'none');
+                  'FaceColor', 'none', 'EdgeColor', contourLineColor);
         startPoint = startPoint + theLevelVerticesNum+1;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
     end
     

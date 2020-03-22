@@ -14,7 +14,7 @@ function resetAllDefaults()
         defaultPropertyName = setDefaultProperties{k};
         factoryPropertyName = strrep(defaultPropertyName, 'default', 'factory');
         set(groot, setDefaultProperties{k}, p.(factoryPropertyName));
-        fprintf('Overwrote value of ''%s'' with value of ''%s''.\n', defaultPropertyName, factoryPropertyName);
+        %fprintf('Overwrote value of ''%s'' with value of ''%s''.\n', defaultPropertyName, factoryPropertyName);
     end
 end
 

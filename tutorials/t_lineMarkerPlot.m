@@ -1,11 +1,15 @@
 function t_lineMarkerPlot()
-    
-    % Get the data
+    % Get the demo data to plot
     [sf, s, c, r, sfModel, sModel, cModel, rModel, b] = getData();
     
-    % Set the desired defaults
-    plotlab.applyRecipe(...
+    % Instantiate a plotlab object
+    plotlabOBJ = plotlab();
+    
+    % Apply the default plotlab recipe overriding 
+    % the color order and the figure size
+    plotlabOBJ.applyRecipe(...
         'colorOrder', [1 0 0; 0 0 1; 0 0 0], ...
+        'lightTheme', 'light', ...
         'figureWidthInches', 6, ...
         'figureHeightInches', 6);
     
@@ -21,7 +25,7 @@ function t_lineMarkerPlot()
     plot(sfModel, cModel, '-'); 
     plot(sfModel, sModel, '-'); 
     plot(sfModel, rModel, '-'); 
-    plot(sfModel, b, 'k--');
+    plot(sfModel, b, '--', 'Color', [0.5 0.5 0.5]);
 
     % Legend
     legend({'center', 'surround', 'RGC'}, 'Location', 'NorthEast');
@@ -36,7 +40,7 @@ function t_lineMarkerPlot()
         'YLim', [0 1.5], 'YTick', 0:0.25:1.5, 'XScale', 'log');
     
     % Export the figure to the gallery directory in PNG format
-    plotlab.exportFig(hFig, 'png', 'mRGCsf', 'gallery');
+    plotlabOBJ.exportFig(hFig, 'png', 'mRGCsf', 'gallery');
 end
 
 function [sf, s, c, r, sfModel, sModel, cModel, rModel, b] = getData()
@@ -45,6 +49,9 @@ function [sf, s, c, r, sfModel, sModel, cModel, rModel, b] = getData()
     sModel = 0.4*exp(-0.5*(sfModel/2).^2) + b;
     cModel = exp(-0.5*(sfModel/10).^2) + b;
     rModel = cModel - sModel + b;
+    
+    % Set the random seed
+    rng(1);
     
     idx = 1:2:numel(sfModel);
     sf = sfModel(idx);

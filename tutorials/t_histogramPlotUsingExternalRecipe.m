@@ -1,6 +1,5 @@
 function t_histogramPlotUsingExternalRecipe()
-
-    % Get the data
+    % Get the demo data to plot
     [time, neuron1PSTH, neuron2PSTH] = getData();
     
     % Colors to use for the two histograms
@@ -12,9 +11,14 @@ function t_histogramPlotUsingExternalRecipe()
     % Let's go with the second recipe
     whichExternalRecipe = externalRecipes{2};
     
-    % Apply that recipe
-    plotlab.applyRecipe(...
+    % Instantiate a plotlab object
+    plotlabOBJ = plotlab();
+    
+    % Apply the external recipe with the desired neurons colors 
+    % using a light-theme and specify a custom figure size
+    plotlabOBJ.applyRecipe(...
         'customRecipeFunction', @()whichExternalRecipe(neuronColors), ...
+        'lightTheme', 'dark', ...
         'figureWidthInches', 6, ...
         'figureHeightInches', 5);
     
@@ -42,7 +46,7 @@ function t_histogramPlotUsingExternalRecipe()
     box 'off';
     
     % Export the figure to the gallery directory in PNG format
-    plotlab.exportFig(hFig, 'png', 'PSTHhistogram', 'gallery');
+    plotlabOBJ.exportFig(hFig, 'png', 'PSTHhistogram', 'gallery');
 end
 
 function [time, neuron1PSTH, neuron2PSTH] = getData()
@@ -56,6 +60,8 @@ function [time, neuron1PSTH, neuron2PSTH] = getData()
     n1 = 6;
     n2 = 9;
     gain = 0.9;
+    % Set the random seed
+    rng(1);
     % Temporal filter response
     ir1 = (time/tau).^n1 .* exp(-time/tau).*(1/factorial(n1) - gain*((time/tau).^2)/factorial(n1+2));
     ir2 = (time/tau).^n2 .* exp(-time/tau).*(1/factorial(n2) - gain*((time/tau).^2)/factorial(n2+2));

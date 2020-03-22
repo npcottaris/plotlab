@@ -1,13 +1,20 @@
 function t_areaPlotUsingPrivateRecipe
-
+    % Get the demo data to plot
     [space, centerRFprofile, surroundRFprofile, subunits] = getData();
     
-    colors = [1 0.5 0.5; 0.3 .5 0.8];
+    % Colors for center and the surround subregion
+    colors = [1 0.2 0.5; 0.3 .8 0.8];
+    % Dark gray color for all the non-linear subunits
     colors = cat(1, colors, repmat([0.2 0.2 0.2], [size(subunits,2) 1]));
     
-    % Apply the recipe included in this file
-    plotlab.applyRecipe(...
+    % Instantiate a plotlab object
+    plotlabOBJ = plotlab();
+    
+    % Apply the private recipe included in this file passing the 
+    % desired colors and specify a custom figure size
+    plotlabOBJ.applyRecipe(...
         'customRecipeFunction', @()privateRecipe(colors), ...
+        'lightTheme', 'light', ...
         'figureWidthInches', 6, ...
         'figureHeightInches', 6);
     
@@ -37,10 +44,10 @@ function t_areaPlotUsingPrivateRecipe
         'YLim', [-0.2 1], 'YTick', -1:0.2:1);
     
     % Offset the axes 
-    plotlab.offsetAxes(gca);
+    plotlabOBJ.offsetAxes(gca);
     
     % Export the figure to the gallery directory in PNG format
-    plotlab.exportFig(hFig, 'png', 'RFProfile', 'gallery');
+    plotlabOBJ.exportFig(hFig, 'png', 'RFProfile', 'gallery');
 end
 
 function privateRecipe(colors)
