@@ -62,10 +62,10 @@ set(gca, 'XLim', [0.1 100], ,...
 ## The plotlab solution
 `plotlab` contains functionality that is engaged before issuing any Matlab plotting commands and which overrides plotting parameters from their factory settings to the settings preferred by the user so as to achieve a preferred look. This is done by calling the `applyRecipe()` method of the `@plotlab` object. The  override of the plotting parameters remains in effect for the current Matlab session, or until a new call to the `applyRecipe()` method  is issued, and is reversed once the user exits the current Matlab session.
 
-There are 3 different ways that the user can override the plotting parameter values set by `applyRecipe()`:
-1. by passing key-value pair arguments in the `applyRecipe()` method. This is a good choice if the user likes most of the choices in the default recipe of `plotlab` and only wishes to modify a few individual parameters.
+`plotlab` offers 3 different ways for overriding the default plotting parameters:
+1. by passing key-value pair arguments to the `applyRecipe()` method. This is a good choice if the user likes most of the choices in the default recipe of `plotlab` and only wishes to modify a few individual parameters.
 2. by passing a function handle to a private recipe that is included in the user's script.
-3. by passing a function handle to one of the recipe files included in `plotlab`'s `recipes` directory. A recipe file can include several recipe functions and the user can select which one to apply.
+3. by passing a function handle to one of the recipe functions included in the `recipes` directory. Files in the `recipes`  directory can include several recipe functions and the user can select which one to apply.
 
 In the table below, override method no. 1 is used, thereby accepting the default `plotlab` recipe and only overriding the figure size. The resulting plot is depicted in the right column. Comparison to Matlab's default plot (depicted in the table above) shows the drastic enhancement in visual appeal and legibility offered by the default recipe of `plotlab`.
 
