@@ -135,7 +135,7 @@ As of MATLAB version 2019B, the graphics root object contains around 2,000 prope
 plotlab.displayPropertiesReferringTo('LineWidth');
 ```
 The method returns all properties that contain the `LineWidth` string in their names, along with their factory values.
-The method also returns any properties containing that string that the user has overriden their default value in the current session. Below is the output of the above command in a fresh Matlab session.
+The method also returns any properties containing that string whose default value was overriden in the current session. Below is the output of the above command in a fresh Matlab session.
 ```
 >> plotlab.displayPropertiesReferringTo('LineWidth');
 
