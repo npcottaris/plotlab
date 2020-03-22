@@ -3,11 +3,10 @@
 ## Automatic generation of visually-engaging Matlab plots 
 
 ```plotlab``` is a toolbox for the automatic generation of publication quality Matlab plots. The approach followed is to define 'recipes' which override various default plotting properties of the Matlab graphics root object, so as to generate plot that:
-- are visually-engaging, 
-- are publication-ready,
+- are visually-engaging and publication-ready,  and
 - have a consistent appearance across operating systems (mac/linux) and graphics formats (vector/raster).
 
-This approach minimizes the classic paradigm of repeatedly entering boilerplate code for setting various plotting options to one's liking. `Plotlab` includes several tutorials that show different ways of setting default parameters for a number of plot types.
+This paradigm minimizes the amount of boilerplate code for setting various plotting options and generates beautiful plots with just a few generic plotting commands that can be even entered from the command window. `plotlab` includes several tutorials that demonstrate the different ways with  which one can override the default parameters for different plot types.
 
 ## The problem addressed
 The left column in the table below depicts a simple MATLAB snippet used to generate a line/marker combo plot. The right column depicts the plot generated using this code. There are two main issues with this, and, in general, with all the default MATLAB plots: 
