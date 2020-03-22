@@ -45,10 +45,5 @@ function t_areaPlot
 end
 
 function [L_absorbance, M_absorbance, S_absorbance, lambda] = getData()
-    S = [350 2 200];
-    lambda = SToWls(S);
-    lambdaPeak = [420.7 530.3  558.9];
-    S_absorbance = StockmanSharpeNomogram(S,lambdaPeak(1));
-    M_absorbance = StockmanSharpeNomogram(S,lambdaPeak(2));
-    L_absorbance = StockmanSharpeNomogram(S,lambdaPeak(3));
+    load('nomograms.mat', 'L_absorbance', 'M_absorbance', 'S_absorbance', 'lambda');
 end
