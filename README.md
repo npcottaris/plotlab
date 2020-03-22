@@ -184,7 +184,7 @@ Found 0 *default* properties with a reference to 'LineWidth'.
 ```
 
 ## Additional capabilities
-`plotlab` can automatically generare dark versions of all plots, simply by setting the `lighTheme` key value to `dark` when calling the `applyRecipe` method, for example:
+`plotlab` can automatically generare dark versions of all plots, simply by setting the `'lightTheme'` key value to `'dark'` when calling the `applyRecipe()` method, for example:
 ```
 plotlabOBJ.applyRecipe(...
    'lightTheme', 'dark', ...
