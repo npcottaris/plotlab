@@ -37,7 +37,7 @@ function displayPropertyNameAndValue(k, thePropertyName, thePropertyValue, type)
     elseif (islogical(thePropertyValue))
         fprintf(' %4d. %-53s with value: %d\n', k, strrep(thePropertyName, type, ''), thePropertyValue);
     elseif isnumeric(thePropertyValue)
-        fprintf(' %4d. %-53s with values: ',k,  strrep(thePropertyName, type, ''));
+        fprintf(' %4d. %-53s with value: ',k,  strrep(thePropertyName, type, ''));
         for kk = 1:min(3, numel(thePropertyValue))
             fprintf('%g ', thePropertyValue(kk));
         end
