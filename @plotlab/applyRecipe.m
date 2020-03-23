@@ -1,4 +1,32 @@
 function applyRecipe(obj, varargin)
+% Gateway method for the matplot recipe to be applied
+%
+% Syntax:
+%   applyRecipe(obj, varargin)
+%
+% Description:
+%    Gateway method for the matplot recipe to be applied. This function
+%    sets a number of plotting parameters to achieve a visually-engaging
+%    plot appearance using the standard recipe. Further plot customization 
+%    can be achieved by passing key-value pairs that alter the values of 
+%    the parameters defined here, and complete customization can be achieved
+%    by passing a handle to an external recipe function. The external recipe
+%    function is applied after the standard recipe is applied.
+%
+% Inputs:
+%    obj            - the plotlab object
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    'customRecipeFunction'    - handle to an external recipe function to
+%                                be executed after the standard recipe
+%     ....                     - a number of parameters overriding the
+%                                standard recipe
+
+% History:
+%    03/21/20  NPC  Wrote it
 
    % Parse input
    p = inputParser;
@@ -142,6 +170,7 @@ function applyRecipe(obj, varargin)
        p.Results.customRecipeFunction();
    end
    
+   % Finally, invert the colors if we are using the dark theme.
    if (strcmp(p.Results.lightTheme, 'dark'))
        invertColors(obj);
    end
