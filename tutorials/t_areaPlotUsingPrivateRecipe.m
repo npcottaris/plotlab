@@ -28,6 +28,8 @@ function t_areaPlotUsingPrivateRecipe
     for k = 1:size(subunits,2)
         area(space, subunits(:,k), 'LineWidth', 1.0);             
     end
+    plot(space, centerRFprofile, '-');
+    plot(space, surroundRFprofile, '-');
     
     % Axes limits and ticks
     set(gca, 'XLim', [-1.5 1.5], 'XTick', -1.5:0.5:1.5, ...
