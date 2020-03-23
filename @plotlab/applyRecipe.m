@@ -4,11 +4,38 @@ function applyRecipe(obj, varargin)
    p = inputParser;
    p.addRequired('obj', @(x)isa(x, 'plotlab'));
    p.addParameter('customRecipeFunction', [], @(x)((isempty(x))||(isa(x,'function_handle'))));
+   
+   % General figure properties
+   p.addParameter('renderer', 'painters', @(x)(ismember(x, {'painters', 'opengl'})));
+   p.addParameter('figureBackgroundColor', [1 1 1], @(x)(isnumeric(x)&&(numel(x) == 3)));
    p.addParameter('colorOrder', plotlab.defaultColorOrder, @isnumeric);
    p.addParameter('lightTheme','light', @(x)((ischar(x))&&(ismember(x, {'light', 'dark'}))));
    p.addParameter('legendOnWhiteBackground', false, @islogical);
    p.addParameter('figureWidthInches',  6.0, @(x)(isnumeric(x)));
    p.addParameter('figureHeightInches', 4.0, @(x)(isnumeric(x)));
+   
+   % Line plot properties
+   p.addParameter('lineWidth', 2, @isnumeric);
+   p.addParameter('lineMarker', 'o', @ischar);
+   p.addParameter('lineMarkerSize',12, @isnumeric);
+   p.addParameter('lineMarkerFaceColor', [0.75 0.75 0.75], @(x)( (isnumeric(x)&&(numel(x) == 3)) ) );
+   p.addParameter('lineMarkerEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
+   
+   % Scatter plot properties
+   p.addParameter('scatterLineWidth', 1.5, @isnumeric);
+   p.addParameter('scatterMarker', 'o', @ischar);
+   p.addParameter('scatterMarkerFaceColor', 'flat', @(x)( (ismember(x, 'flat')) || (isnumeric(x)&&(numel(x) == 3)) ) );
+   p.addParameter('scatterMarkerEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
+   p.addParameter('scatterMarkerFaceAlpha', 0.4, @isnumeric);
+   
+   % Area plot properties
+   p.addParameter('areaFaceColor', 'flat', @(x)( (ismember(x, 'flat')) || (isnumeric(x)&&(numel(x) == 3)) ) );
+   p.addParameter('areaFaceAlpha', 0.3, @isnumeric);
+   p.addParameter('areaEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
+   p.addParameter('areaEdgeAlpha', 0.5, @isnumeric);
+   p.addParameter('areaLineWidth', 1.5, @isnumeric);
+   
+   % Parse the input
    p.parse(obj, varargin{:});
    
    % New plotting params do not go into effect if there are open figures.
@@ -20,31 +47,34 @@ function applyRecipe(obj, varargin)
    % Apply plotlab's default recipe
 
    % Figure renderer: Painters for better 2D graphics
-   set(groot, 'defaultFigureRenderer', 'painters');
+   set(groot, 'defaultFigureRenderer',p.Results.renderer);
    
    % Figure backround color default
-   set(groot, 'defaultFigureColor', [1 1 1]);
+   set(groot, 'defaultFigureColor', p.Results.figureBackgroundColor);
    
    % Color order
    plotlab.setDefaultColorOrder('rgbColors', p.Results.colorOrder);
    
    % Line plot defaults
-   set(groot, 'defaultLineLineWidth', 2);
-   set(groot, 'defaultLineMarkerSize',12);
-   set(groot, 'defaultLineMarkerFaceColor', [0.75 0.75 0.75]);
+   set(groot, 'defaultLineLineWidth', p.Results.lineWidth);
+   set(groot, 'defaultLineMarker', p.Results.lineMarker);
+   set(groot, 'defaultLineMarkerSize',p.Results.lineMarkerSize);
+   set(groot, 'defaultLineMarkerFaceColor', p.Results.lineMarkerFaceColor);
+   set(groot, 'defaultLineMarkerEdgeColor', p.Results.lineMarkerEdgeColor);
    
    % Scatter plot defaults
-   set(groot, 'defaultScatterMarker', 'o');
-   set(groot, 'defaultScatterMarkerFaceColor', 'flat');
-   set(groot, 'defaultScatterMarkerFaceAlpha', 0.4);
-   set(groot, 'defaultScatterLineWidth', 1.5);
+   set(groot, 'defaultScatterMarker', p.Results.scatterMarker);
+   set(groot, 'defaultScatterMarkerFaceColor', p.Results.scatterMarkerFaceColor);
+   set(groot, 'defaultScatterMarkerFaceAlpha', p.Results.scatterMarkerFaceAlpha);
+   set(groot, 'defaultScatterLineWidth', p.Results.scatterLineWidth);
      
    % Area plot defaults
-   set(groot, 'defaultAreaFaceAlpha', 0.3);
-   set(groot, 'defaultAreaFaceColor', 'flat');
-   set(groot, 'defaultAreaEdgeColor', [0 0 0]);
-   set(groot, 'defaultAreaEdgeAlpha', 0.5);
-   set(groot, 'defaultAreaLineWidth', 1.5);
+   p.Results
+   set(groot, 'defaultAreaFaceColor', p.Results.areaFaceColor);
+   set(groot, 'defaultAreaFaceAlpha', p.Results.areaFaceAlpha);
+   set(groot, 'defaultAreaEdgeColor', p.Results.areaEdgeColor);
+   set(groot, 'defaultAreaEdgeAlpha', p.Results.areaEdgeAlpha);
+   set(groot, 'defaultAreaLineWidth', p.Results.areaLineWidth);
    
    % Font defaults
    set(groot, 'defaultAxesFontSize', 16);
