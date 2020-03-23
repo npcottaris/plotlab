@@ -1,4 +1,27 @@
 function t_histogramPlotUsingExternalRecipe()
+% Generate a bar plot using an external plotlab recipe.
+%
+% Syntax:
+%   t_lineMarkerPlot
+%
+% Description:
+%    Demonstrates how to generate a bar plot using a custom external recipe
+%    which modifies the default recipe. Also shows how to pass arguments to
+%    the external recipe.
+%
+% Inputs:
+%    None.
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    None.
+%
+
+% History:
+%    03/21/20  NPC  Wrote it
+
     % Get the demo data to plot
     [time, neuron1PSTH, neuron2PSTH] = getData();
     

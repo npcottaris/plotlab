@@ -1,4 +1,26 @@
 function t_areaPlot
+% Generate an area plot using the default plotlab recipe.
+%
+% Syntax:
+%   t_lineMarkerPlot
+%
+% Description:
+%    Demonstrates how to generate an area plot using the default plotlab
+%    recipe only overriding the ccolorOrder and figure size). 
+%
+% Inputs:
+%    None.
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    None.
+%
+
+% History:
+%    03/21/20  NPC  Wrote it
+
      % Get the demo data to plot
     [L_absorbance, M_absorbance, S_absorbance, lambda] = getData();
     

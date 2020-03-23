@@ -20,7 +20,7 @@ function t_lineMarkerPlot()
 %
 
 % History:
-%    03/21/29  NPC  Wrote it
+%    03/21/20  NPC  Wrote it
 
     % Get the demo data to plot
     [sf, s, c, r, sfModel, sModel, cModel, rModel, b] = getData();
