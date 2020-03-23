@@ -126,8 +126,12 @@ plotlabOBJ.applyRecipe(...
    'figureHeightInches', 5);
  ```
 
+
+## Caveats
+One caveat of the approach followed by `plotlab` is that, in order for the override of the graphics root object to take effect, all open figures must be closed. So each time the `applyRecipe` method is invoked, all open figures are automatically closed. One workaround for having more than one figures open, is to call `appyRecipe()` method once and then generate all the figures that use the same recipe without calling the `appyRecipe()` again. Just the generic plotting code, which will use the overriden parameters values as set by the first invocation of the `appyRecipe()` method. To have multiple figures open that reply on different recipes, one could fire separate instances of Matlab, one for each recipe that needs to be active.
+
 ## Tutorials
-The `tutorials` directory contains tutorials that show different ways of using `plotlab` to enhance a variety of plot types. 
+The `tutorials` directory contains tutorial scripts that demonstrate the various ways with which `plotlab` can enhance different plot types. 
 
 ## Writing recipe funcions
 As of MATLAB version 2019B, the graphics root object contains around 2,000 properties that control the appearance of different plots. Going through all of them to find the one that controls a particular aspect of a plot can be daunting. The `plotlab.displayPropertiesReferringTo()` method can be used to find the relevant properties fast. For example, to find properties that contol the line width of a plot, type the following in the command window.
