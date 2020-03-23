@@ -2,12 +2,13 @@ function t_histogramPlotUsingExternalRecipe()
 % Generate a bar plot using an external plotlab recipe.
 %
 % Syntax:
-%   t_lineMarkerPlot
+%   t_histogramPlotUsingExternalRecipe
 %
 % Description:
 %    Demonstrates how to generate a bar plot using a custom external recipe
 %    which modifies the default recipe. Also shows how to pass arguments to
-%    the external recipe.
+%    the external recipe. Additionally, we show how to further modify the
+%    bar plot by plotting an outline and by offsetting the x- and y-axes.
 %
 % Inputs:
 %    None.
@@ -58,7 +59,7 @@ function t_histogramPlotUsingExternalRecipe()
     
     % Axes limits and ticks  
     set(gca, 'XLim', [0 500], 'XTick', 0:100:500, ...
-        'YLim', [-50 125], 'YTick', [-50:25:200]);
+        'YLim', [-50 125], 'YTick', -50:25:200);
     
     % Offset the axes 
     plotlab.offsetAxes(gca);

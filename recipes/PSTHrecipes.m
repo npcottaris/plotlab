@@ -1,14 +1,39 @@
-function theFunctionHandle = PSTHrecipes
-     theFunctionHandle = localfunctions;
+function theRecipeFunctionHandles = PSTHrecipes
+% Provide handles to all the recipe functions included in this file
+%
+% Syntax:
+%   externalRecipes = PSTHrecipes;
+%
+% Description:
+%    Provide handles to all the recipe functions included in this file.
+%
+% Inputs:
+%    None.
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    None.
+%
+% For usage see:
+%   t_histogramPlotUsingExternalRecipe()
+%
+
+% History:
+%    03/21/20  NPC  Wrote it
+
+     theRecipeFunctionHandles = localfunctions;
 end
 
-% First external recipe
+% First external recipe. Only setting the color order
 function firstRecipe(colors)
    % Color order
    set(groot, 'defaultAxesColorOrder', colors);
 end
 
-% Second external recipe
+% Second external recipe. Setting the color order and a number of bar plot
+% specific and other plotting options
 function secondRecipe(colors)
    % Color order
    set(groot, 'defaultAxesColorOrder', colors);
