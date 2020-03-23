@@ -9,31 +9,54 @@ function applyRecipe(obj, varargin)
    p.addParameter('renderer', 'painters', @(x)(ismember(x, {'painters', 'opengl'})));
    p.addParameter('figureBackgroundColor', [1 1 1], @(x)(isnumeric(x)&&(numel(x) == 3)));
    p.addParameter('colorOrder', plotlab.defaultColorOrder, @isnumeric);
-   p.addParameter('lightTheme','light', @(x)((ischar(x))&&(ismember(x, {'light', 'dark'}))));
+   p.addParameter('lightTheme','light', @(x)(ismember(x, {'light', 'dark'})));
    p.addParameter('legendOnWhiteBackground', false, @islogical);
    p.addParameter('figureWidthInches',  6.0, @(x)(isnumeric(x)));
    p.addParameter('figureHeightInches', 4.0, @(x)(isnumeric(x)));
    
    % Line plot properties
-   p.addParameter('lineWidth', 2, @isnumeric);
+   p.addParameter('lineWidth', 2, @isscalar);
    p.addParameter('lineMarker', 'o', @ischar);
-   p.addParameter('lineMarkerSize',12, @isnumeric);
+   p.addParameter('lineMarkerSize',12, @isscalar);
    p.addParameter('lineMarkerFaceColor', [0.75 0.75 0.75], @(x)( (isnumeric(x)&&(numel(x) == 3)) ) );
    p.addParameter('lineMarkerEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
    
    % Scatter plot properties
-   p.addParameter('scatterLineWidth', 1.5, @isnumeric);
+   p.addParameter('scatterLineWidth', 1.5, @isscalar);
    p.addParameter('scatterMarker', 'o', @ischar);
-   p.addParameter('scatterMarkerFaceColor', 'flat', @(x)( (ismember(x, 'flat')) || (isnumeric(x)&&(numel(x) == 3)) ) );
+   p.addParameter('scatterMarkerFaceColor', 'flat', @(x)( (ismember(x, {'flat'})) || (isnumeric(x)&&(numel(x) == 3)) ) );
    p.addParameter('scatterMarkerEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
-   p.addParameter('scatterMarkerFaceAlpha', 0.4, @isnumeric);
+   p.addParameter('scatterMarkerFaceAlpha', 0.4, @isscalar);
    
    % Area plot properties
-   p.addParameter('areaFaceColor', 'flat', @(x)( (ismember(x, 'flat')) || (isnumeric(x)&&(numel(x) == 3)) ) );
-   p.addParameter('areaFaceAlpha', 0.3, @isnumeric);
+   p.addParameter('areaFaceColor', 'flat', @(x)( (ismember(x, {'flat'})) || (isnumeric(x)&&(numel(x) == 3)) ) );
+   p.addParameter('areaFaceAlpha', 0.3, @isscalar);
    p.addParameter('areaEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
-   p.addParameter('areaEdgeAlpha', 0.5, @isnumeric);
-   p.addParameter('areaLineWidth', 1.5, @isnumeric);
+   p.addParameter('areaEdgeAlpha', 0.5, @isscalar);
+   p.addParameter('areaLineWidth', 1.5, @isscalar);
+   
+   % Font  properties
+   p.addParameter('axesFontSize', 16, @isscalar);
+   p.addParameter('axesFontName', 'Helvetica', @ischar);
+   p.addParameter('axesTitleFontWeight', 'normal', @(x)(ismember(x, {'normal', 'bold', 'italic'})));
+   p.addParameter('axesLabelFontSizeMultiplier', 1.25, @isscalar);
+   
+   % Ticks
+   p.addParameter('axesTickLength', [0.015 0.01], @(x)(isnumeric(x)&&(numel(x) == 2)));
+   p.addParameter('axesTickDir', 'both',  @(x)(ismember(x, {'both', 'in', 'out'})));
+   p.addParameter('axesTickDirMode', 'manual', @(x)(ismember(x, {'auto', 'manual'})));
+   
+   % Axes line width & box
+   p.addParameter('axesLineWidth', 1.0, @isscalar);
+   p.addParameter('axesBox', 'off', @(x)(ismember(x, {'on', 'off'})));
+   
+   % Grid defaults
+   p.addParameter('axesXGrid', 'on', @(x)(ismember(x, {'on', 'off'})));
+   p.addParameter('axesYGrid', 'on', @(x)(ismember(x, {'on', 'off'})));
+   p.addParameter('axesMinorGridAlpha', 0, @isscalar);
+   
+   % Legend
+   p.addParameter('legendLocation', 'NorthWest', @ischar);
    
    % Parse the input
    p.parse(obj, varargin{:});
@@ -69,7 +92,6 @@ function applyRecipe(obj, varargin)
    set(groot, 'defaultScatterLineWidth', p.Results.scatterLineWidth);
      
    % Area plot defaults
-   p.Results
    set(groot, 'defaultAreaFaceColor', p.Results.areaFaceColor);
    set(groot, 'defaultAreaFaceAlpha', p.Results.areaFaceAlpha);
    set(groot, 'defaultAreaEdgeColor', p.Results.areaEdgeColor);
@@ -77,26 +99,28 @@ function applyRecipe(obj, varargin)
    set(groot, 'defaultAreaLineWidth', p.Results.areaLineWidth);
    
    % Font defaults
-   set(groot, 'defaultAxesFontSize', 16);
-   set(groot, 'defaultAxesFontName', 'Helvetica');
-   set(groot, 'defaultAxesTitleFontWeight', 'normal');
-   set(groot, 'defaultAxesLabelFontSizeMultiplier', 1.25);
+   set(groot, 'defaultAxesFontSize', p.Results.axesFontSize);
+   set(groot, 'defaultAxesFontName', p.Results.axesFontName);
+   set(groot, 'defaultAxesTitleFontWeight', p.Results.axesTitleFontWeight);
+   set(groot, 'defaultAxesLabelFontSizeMultiplier', p.Results.axesLabelFontSizeMultiplier);
    
    % Ticks
-   set(groot, 'defaultAxesTickLength', [0.015 0.01]);
-   set(groot, 'defaultAxesTickDir', 'both');
-   set(groot, 'defaultAxesTickDirMode', 'manual');
+   set(groot, 'defaultAxesTickLength', p.Results.axesTickLength);
+   set(groot, 'defaultAxesTickDir', p.Results.axesTickDir);
+   set(groot, 'defaultAxesTickDirMode', p.Results.axesTickDirMode);
    
-   % Axes line width
-   set(groot, 'defaultAxesLineWidth', 1.0);
+   % Axes line width & Box
+   set(groot, 'defaultAxesLineWidth', p.Results.axesLineWidth);
+   set(groot, 'defaultAxesBox', p.Results.axesBox);
    
    % Grid defaults
-   set(groot, 'defaultAxesXGrid', 'on');
-   set(groot, 'defaultAxesYGrid', 'on');
-   set(groot, 'defaultAxesMinorGridAlpha', 0);
+   set(groot, 'defaultAxesXGrid', p.Results.axesXGrid);
+   set(groot, 'defaultAxesYGrid', p.Results.axesYGrid);
+   set(groot, 'defaultAxesMinorGridAlpha', p.Results.axesMinorGridAlpha);
    
    % Legend location & apparance
-   set(groot, 'defaultLegendLocation', 'NorthWest');
+   set(groot, 'defaultLegendLocation', p.Results.legendLocation);
+   
    if (p.Results.legendOnWhiteBackground)
        set(groot, 'defaultLegendColor', [1 1 1]);
        set(groot, 'defaultLegendEdgeColor', [1 1 1])
@@ -105,9 +129,6 @@ function applyRecipe(obj, varargin)
         % or no legend background
         set(groot, 'defaultLegendBox', 'off');
    end
-   
-   % Box default
-   set(groot, 'defaultAxesBox', 'off');
    
    % Figure size defaults
    plotlab.setDefaultFigureSize(...
