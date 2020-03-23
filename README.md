@@ -128,7 +128,7 @@ plotlabOBJ.applyRecipe(...
 
 
 ## Caveats
-One caveat of the approach followed by `plotlab` is that, in order for the override of the graphics root object to take effect, all open figures must be closed. So each time the `applyRecipe` method is invoked, all open figures are automatically closed. One workaround for having more than one figures open, is to call `appyRecipe()` method once and then generate all the figures that use the same recipe without calling the `appyRecipe()` again. Just the generic plotting code, which will use the overriden parameters values as set by the first invocation of the `appyRecipe()` method. To have multiple figures open that reply on different recipes, one could fire separate instances of Matlab, one for each recipe that needs to be active.
+One caveat of the approach followed by `plotlab` is that, in order for the override of the graphics root object to take effect, all open figures must be closed. So each time the `applyRecipe()` method is invoked, all open figures are automatically closed. One workaround for having more than one figures open, is to call `applyRecipe()` method once and then generate all the figures that use the same recipe without calling the `applyRecipe()` method again. Just the generic plotting code, which will use the overriden parameters values as set by the first invocation of the `appyRecipe()` method. To have multiple figures open that require different recipes, one could open separate instances of Matlab, one for each recipe that needs to be active.
 
 ## Tutorials
 The `tutorials` directory contains tutorial scripts that demonstrate the various ways with which `plotlab` can enhance different plot types. 
