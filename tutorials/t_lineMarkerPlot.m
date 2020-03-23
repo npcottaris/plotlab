@@ -25,20 +25,23 @@ function t_lineMarkerPlot()
     plot(sfModel, cModel, '-'); 
     plot(sfModel, sModel, '-'); 
     plot(sfModel, rModel, '-'); 
+    
+    % Baserate
     plot(sfModel, b, '--', 'Color', [0.5 0.5 0.5]);
 
+    % Axes limits and ticks
+    set(gca, 'XLim', [0.1 100], 'XTick', [0.1 0.3 1 3 10 30 100], ...
+        'YLim', [0 1.5], 'YTick', 0:0.25:1.5, 'XScale', 'log');
+    
+    % Labels
+    xlabel('\it spatial frequency (c/deg)'); ylabel('\it sensitivity');
+    
     % Legend
     legend({'center', 'surround', 'RGC'}, 'Location', 'NorthEast');
 
     % Title
     title('mRGC sf tuning');
-
-    % Labels
-    xlabel('\it spatial frequency (c/deg)'); ylabel('\it sensitivity');
-
-    set(gca, 'XLim', [0.1 100], 'XTick', [0.1 0.3 1 3 10 30 100], ...
-        'YLim', [0 1.5], 'YTick', 0:0.25:1.5, 'XScale', 'log');
-    
+ 
     % Export the figure to the gallery directory in PNG format
     plotlabOBJ.exportFig(hFig, 'png', 'mRGCsf', 'gallery');
 end

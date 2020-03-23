@@ -21,25 +21,28 @@ function t_areaPlot
     % New figure
     hFig = figure(1); clf; hold on;
 
-    % Area plots (data)
+    % Area plots filled with the LMSconeColors
+    % The first area plot is filled with the first LMSconeColor, 
+    % the second plot with the second etc. 
     minAbsorbance = 0.01;
     area(lambda, L_absorbance, minAbsorbance);
     area(lambda, M_absorbance, minAbsorbance);
     area(lambda, S_absorbance, minAbsorbance);
     
+    % Axes limits and ticks 
+    set(gca, 'XLim', [400 700], 'XTick', 350:50:850, ...
+        'YLim', [minAbsorbance 1.0], 'YTick', [0.01 0.03 0.1 0.3 1], ...
+        'YScale', 'log');
+    
+    % Labels
+    xlabel('\it wavelength (nm)'); ylabel('\it normalized absorbance');
+
     % Legend
     legend({'L cone', 'M cone', 'S cone'}, 'Location', 'NorthEast');
 
     % Title
     title(sprintf('Stockman-Sharpe nomograms'));
 
-    % Labels
-    xlabel('\it wavelength (nm)'); ylabel('\it normalized absorbance');
-
-    set(gca, 'XLim', [400 700], 'XTick', 350:50:850, ...
-        'YLim', [minAbsorbance 1.0], 'YTick', [0.01 0.03 0.1 0.3 1], ...
-        'YScale', 'log');
-    
     % Export the figure to the gallery directory in PNG format
     plotlabOBJ.exportFig(hFig, 'png', 'SSnomograms', 'gallery');
 end

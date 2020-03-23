@@ -20,28 +20,38 @@ function t_contourPlot
     plotConeMosaic(coneMosaicStruct);
     
     % Superimpose a transparent contour plot of the PSF
+    % Filled contours are drawn at the zLevels
     zLevels = 0.01:0.01:0.99;
+    
+    % Line contours are drawn at the outlinedLevels
     outlinedLevels = 0.03:0.1:0.95;
+    
+    % Filled contours are filled with this color map
     cMap = brewermap(512, 'greys');
+    
+    % Line contours are drawin in this color
     contourLineColor = [0 0 1];
     
+    % Call the specialized contour plot
     plotlabOBJ.transparentContourPlot(gca,...
         psfStruct.xSupport, psfStruct.ySupport,...
         psfStruct.psf, zLevels, outlinedLevels, ...
         contourLineColor, cMap);
-    % Title
-    title(sprintf('point spread function & cone mosaic'));
 
-    % Labels
-    xlabel('\it space (arc min)'); 
-    ylabel('\it space (arc min)'); 
-
+    % Axes limits and ticks
     set(gca, 'CLim', [0 1], 'XLim', [-3 3], 'XTick', -3:1:3, ...
         'YLim', [-3 3], 'YTick', -3:1:3);
     
     % Square axis
     axis 'square';
  
+    % Labels
+    xlabel('\it space (arc min)'); 
+    ylabel('\it space (arc min)');
+    
+    % Title
+    title(sprintf('point spread function & cone mosaic'));
+    
     % Export the figure to the gallery directory in PNG format
     plotlabOBJ.exportFig(hFig, 'png', 'PointSpreadFunction', 'gallery');
 end

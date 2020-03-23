@@ -24,27 +24,32 @@ function t_histogramPlotUsingExternalRecipe()
     
     % New figure
     hFig = figure(1); clf;
+    
+    % Bar plots for the histograms
     bar(time,  neuron1PSTH, 1); hold on
     bar(time,  neuron2PSTH, 1);
+    
+    % Outline the bars for a nice effect
     plotlab.barOutline(time, neuron1PSTH);
     plotlab.barOutline(time, neuron2PSTH);
-   
+    
+    % Axes limits and ticks  
+    set(gca, 'XLim', [0 500], 'XTick', 0:100:500, ...
+        'YLim', [-50 125], 'YTick', [-50:25:200]);
+    
+    % Offset the axes 
+    plotlab.offsetAxes(gca);
+    box 'off';
+    
+    % Labels
+    xlabel('\it time (msec)'); ylabel('\it diff. response (spikes/sec)');
+    
     % Legend
     legend({'neuron-A', 'neuron-B'}, 'Location', 'NorthEast');
 
     % Title
     title(sprintf('neurons in temporal quadrature'));
-
-    % Labels
-    xlabel('\it time (msec)'); ylabel('\it diff. response (spikes/sec)');
-
-    set(gca, 'XLim', [0 500], 'XTick', 0:100:500, ...
-        'YLim', [-50 125], 'YTick', [-50:25:200]);
-
-    % Offset the axes 
-    plotlab.offsetAxes(gca);
-    box 'off';
-    
+ 
     % Export the figure to the gallery directory in PNG format
     plotlabOBJ.exportFig(hFig, 'png', 'PSTHhistogram', 'gallery');
 end

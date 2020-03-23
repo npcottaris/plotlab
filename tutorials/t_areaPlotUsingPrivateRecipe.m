@@ -21,14 +21,23 @@ function t_areaPlotUsingPrivateRecipe
     % New figure
     hFig = figure(1); clf; hold on;
 
-    % Area plots
+    % Area plots with default line width (thick) for center & surround
     area(space, centerRFprofile);
     area(space, surroundRFprofile);
+    % Area plots with narrower line width for the subunits
     for k = 1:size(subunits,2)
         area(space, subunits(:,k), 'LineWidth', 1.0);             
     end
-    plot(space, centerRFprofile);
-    plot(space, surroundRFprofile);
+    
+    % Axes limits and ticks
+    set(gca, 'XLim', [-1.5 1.5], 'XTick', -1.5:0.5:1.5, ...
+        'YLim', [-0.2 1], 'YTick', -1:0.2:1);
+    
+    % Offset the axes 
+    plotlabOBJ.offsetAxes(gca);
+    
+    % Labels
+    xlabel('\it space (degs)'); ylabel('\it sensitivity');
     
     % Legend
     legend({'center', 'surround', 'subunits'}, 'Location', 'NorthWest');
@@ -36,16 +45,6 @@ function t_areaPlotUsingPrivateRecipe
     % Title
     title(sprintf('pRGC RF profile'));
 
-    % Labels
-    xlabel('\it space (degs)'); ylabel('\it sensitivity');
-
-    % Limits
-    set(gca, 'XLim', [-1.5 1.5], 'XTick', -1.5:0.5:1.5, ...
-        'YLim', [-0.2 1], 'YTick', -1:0.2:1);
-    
-    % Offset the axes 
-    plotlabOBJ.offsetAxes(gca);
-    
     % Export the figure to the gallery directory in PNG format
     plotlabOBJ.exportFig(hFig, 'png', 'RFProfile', 'gallery');
 end
