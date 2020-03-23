@@ -1,4 +1,24 @@
 function resetAllDefaults()
+% Reset all the graphics root object parameters to their factory values
+%
+% Syntax:
+%   resetAllDefaults()
+%
+% Description:
+%    Reset all the graphics root object parameters to their factory values
+%
+% Inputs:
+%    None.
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    None.
+%
+
+% History:
+%    03/21/20  NPC  Wrote it
 
     % New plotting params do not go into effect if there are open figures.
     close all;
