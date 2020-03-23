@@ -1,4 +1,27 @@
 function t_lineMarkerPlot()
+% Generate a combined line/scatter plot using the default plotlab recipe.
+%
+% Syntax:
+%   t_lineMarkerPlot
+%
+% Description:
+%    Demonstrates how to generate a combined line/scatter plot using the
+%    default plotlab recipe with a light theme, and only overriding a few 
+%    plot parameters (colorOrder, lineMarkerSize, and figure size). 
+%
+% Inputs:
+%    None.
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    None.
+%
+
+% History:
+%    03/21/29  NPC  Wrote it
+
     % Get the demo data to plot
     [sf, s, c, r, sfModel, sModel, cModel, rModel, b] = getData();
     
@@ -10,6 +33,7 @@ function t_lineMarkerPlot()
     plotlabOBJ.applyRecipe(...
         'colorOrder', [1 0 0; 0 0 1; 0 0 0], ...
         'lightTheme', 'light', ...
+        'lineMarkerSize', 12, ...
         'figureWidthInches', 6, ...
         'figureHeightInches', 6);
     
