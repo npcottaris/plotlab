@@ -28,7 +28,7 @@ classdef plotlab < handle
         %% Geteway to different plotting recipes which alter the default graphics root object properties
         applyRecipe(obj, varargin);
         
-        % Render a semitrasparent contour plot
+        %% Method for rendering a semitrasparent contour plot
         transparentContourPlot(obj,axesHandle, xSupport, ySupport, zData, zLevels, outlinedLevels, contourLineColor, cmap);
     
         %% Method to export figure
@@ -50,7 +50,7 @@ classdef plotlab < handle
         % Set the default figure size
         setDefaultFigureSize(varargin);
         
-        %% Methods to achieve renderings not controlled by the different properties of the graphics root object
+        %% Methods to achieve effects not controlled by the different properties of the graphics root object
         % Offset the axes
         offsetAxes(axesHandle, varargin);
         
