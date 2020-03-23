@@ -1,4 +1,27 @@
 function t_areaPlotUsingPrivateRecipe
+% Generate an area plot using an internal plotlab recipe.
+%
+% Syntax:
+%   t_areaPlotUsingPrivateRecipe
+%
+% Description:
+%    Demonstrates how to generate a custom area plot using an internal
+%    recipe included in this file. Also shows how to further modify the
+%    area plot by offsetting the x- and y-axes.
+%
+% Inputs:
+%    None.
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    None.
+%
+
+% History:
+%    03/21/20  NPC  Wrote it
+
     % Get the demo data to plot
     [space, centerRFprofile, surroundRFprofile, subunits] = getData();
     

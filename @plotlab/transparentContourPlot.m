@@ -1,5 +1,40 @@
 function transparentContourPlot(obj, axesHandle, xSupport, ySupport, zData, ...
     zLevels, outlinedLevels, contourLineColor, cmap)
+% Generate a semi-transparent contour plot
+%
+% Syntax:
+%   transparentContourPlot(obj, axesHandle, xSupport, ySupport, zData, ...
+%    zLevels, outlinedLevels, contourLineColor, cmap)
+%
+% Description:
+%    Generate a custom contour plot in which contours are filled with a 
+%    semitransparent color using a user-specified colormap, and outlined 
+%    using a user-specified color, possibly at a different set of levels
+%
+% Inputs:
+%    obj                - the plotlab object
+%    axesHandle         - the axes on which the contour is to be rendered
+%    xSupport           - the x-axis support
+%    ySupport           - the y-axis support
+%    zData              - the zData
+%    zLevels            - levels for the filled contours
+%    outlinedLevels     - levels for the outlined contours
+%    contoutLineColor   - color for the outlined contours
+%    cmap               - colormap for the filled contours
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    None.
+%
+% For usage see:
+%   t_contourPlot()
+%
+
+% History:
+%    03/21/20  NPC  Wrote it
+
 
     if (strcmp(obj.lightTheme, 'dark'))
         cmap = 1 - cmap;

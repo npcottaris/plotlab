@@ -1,4 +1,28 @@
 function offsetAxes(axesHandle, varargin)
+% Offset the x- and y- axes
+%
+% Syntax:
+%   offsetAxes(axesHandle, varargin)
+%
+% Description:
+%    Offset the x- and y- axes to aid visualization of points near the axes
+%
+% Inputs:
+%    axesHandle         - the axes to be offset
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    'offsetPercent'    - Percentage of the axis range for the offset
+%
+% For usage see:
+%   t_areaPlotUsingPrivateRecipe()
+%
+
+% History:
+%    03/21/20  NPC  Wrote it
+
     p = inputParser;
     p.addParameter('offsetPercent',0.03, @(x)(isnumeric(x)));
     p.parse(varargin{:});

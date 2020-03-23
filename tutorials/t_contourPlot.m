@@ -1,4 +1,27 @@
 function t_contourPlot
+% Generate a contour plot using a private plotlab recipe included in this
+% file.
+%
+% Syntax:
+%   t_contourPlot
+%
+% Description:
+%    Demonstrates how to generate a transparent contour plot on top of
+%    another plot using a private plotlab recipe.
+%
+% Inputs:
+%    None.
+%
+% Outputs:
+%    None.
+%
+% Optional key/value pairs:
+%    None.
+%
+
+% History:
+%    03/21/20  NPC  Wrote it
+
     % Get the demo data to plot
     [coneMosaicStruct, psfStruct] = getData();
     
