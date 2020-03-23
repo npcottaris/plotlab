@@ -1,4 +1,28 @@
 function matchingPropertyNames = findGraphicsProperties(type, refString, printNamesAndValues)
+% Find properties of the graphics root object with a substring in their name
+%
+% Syntax:
+%   matchingPropertyNames = findGraphicsProperties(type, refString, printNamesAndValues)
+%
+% Description:
+%    Find properties of the graphics root object with a substring in their name
+%
+% Inputs:
+%    type                   - the type of property to search ('factory', or 'default')
+%    refString              - the substring in the property name to be matched 
+%    printNamesAndValues    - boolean: whether to print the name and value of
+%                              the matched properties
+%
+% Outputs:
+%    matchingPropertyNames  - the names of the matched properties
+%
+% Optional key/value pairs:
+%    None.
+%
+
+% History:
+%    03/21/20  NPC  Wrote it
+
     theGraphicsRootObj = groot;
     theGraphicsRootObj.ShowHiddenHandles = 'on';
     
