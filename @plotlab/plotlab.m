@@ -1,6 +1,32 @@
+% Create a plotlab object
+%
+% Syntax:
+%   plotlabOBJ = plotlab();
+%
+% Description:
+%    Instantiates a plotlab object
+%
+% Inputs:
+%    None.
+%
+% Outputs:
+%    None.
+
+% History:
+%    03/21/29  NPC  Wrote it
+
+% Examples:
+%{
+    t_lineMarkerPlot()
+    t_histogramPlotUsingExternalRecipe()
+    t_contourPlot()
+    t_areaPlotUsingPrivateRecipe()
+%}
+
 classdef plotlab < handle
 
     properties (Constant)
+        % Line/area/marker color of sequentials plots if none is specified
         defaultColorOrder = [
             0.8941    0.1020    0.1098;
             0.2157    0.4941    0.7216;
@@ -16,6 +42,8 @@ classdef plotlab < handle
     end
     
     properties (SetAccess=private)
+        % The light theme to be applied, either 'light' (white background),
+        % or 'dark' (black background, inverted colors
         lightTheme;
     end
     
