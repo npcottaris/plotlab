@@ -78,7 +78,7 @@ In the table below, override method no. 1 is used, thereby accepting the default
 <pre lang="matlab">
 % Instantiate a plotlab object
 plotlabOBJ = plotlab();
-    
+%    
 % Apply the default plotlab recipe 
 % overriding just the figure size
 plotlabOBJ.applyRecipe(...
