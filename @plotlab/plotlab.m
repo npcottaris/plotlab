@@ -82,6 +82,9 @@ classdef plotlab < handle
         % Offset the axes
         offsetAxes(axesHandle, varargin);
         
+        % Reposition the legend
+        repositionLegend(legendHandle, xyPos);
+        
         % Draw the outlines of a bar plot
         barOutline(x,y);
         

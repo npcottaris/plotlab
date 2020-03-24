@@ -37,8 +37,8 @@ function t_areaPlot
     % the color order and the figure size
     plotlabOBJ.applyRecipe(...
         'colorOrder', LMSconeColors, ...
-        'figureWidthInches', 6, ...
-        'figureHeightInches', 6);
+        'figureWidthInches', 5, ...
+        'figureHeightInches', 5);
     
     % New figure
     hFig = figure(1); clf; hold on;
@@ -60,10 +60,13 @@ function t_areaPlot
     xlabel('\it wavelength (nm)'); ylabel('\it normalized absorbance');
 
     % Legend
-    legend({'L cone', 'M cone', 'S cone'}, 'Location', 'NorthEast');
-
+    lHandle = legend({'L', 'M', 'S'});
+    
+    % Reposition the legend
+    plotlabOBJ.repositionLegend(lHandle, [0.78 0.77]);
+    
     % Title
-    title(sprintf('Stockman-Sharpe nomograms'));
+    title(sprintf('Stockman-Sharpe cone nomograms'));
 
     % Export the figure to the gallery directory in PNG format
     plotlabOBJ.exportFig(hFig, 'png', 'SSnomograms', 'gallery');
