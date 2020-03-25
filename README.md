@@ -1,5 +1,5 @@
 # plotlab
-![Logo](assets/plotlabLogo2.png)
+![Logo](assets/plotlabLogo.png)
 ## Automatic generation of visually-engaging Matlab plots 
 
 ```plotlab``` is a toolbox for the automatic generation of publication quality Matlab plots. The approach followed is to define 'recipes' which override various default plotting properties of the Matlab graphics root object, so as to generate plots that are visually-engaging and publication-ready, with a consistent appearance across operating systems (mac/linux) and graphics formats (vector/raster).
