@@ -63,6 +63,13 @@ function applyRecipe(obj, varargin)
    p.addParameter('areaEdgeAlpha', 0.5, @isscalar);
    p.addParameter('areaLineWidth', 1.5, @isscalar);
    
+   % Patch plot properties
+   p.addParameter('patchEdgeAlpha', 1, @isscalar); 
+   p.addParameter('patchEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3))); 
+   p.addParameter('patchFaceAlpha', 0.5, @isscalar); 
+   p.addParameter('patchFaceColor', [0.8 0.8 0.8], @(x)(isnumeric(x)&&(numel(x) == 3)));  
+   p.addParameter('patchLineWidth', 1.5, @isscalar);
+   
    % Font  properties
    p.addParameter('axesFontSize', 16, @isscalar);
    p.addParameter('axesFontName', 'Helvetica', @ischar);
@@ -127,6 +134,13 @@ function applyRecipe(obj, varargin)
    set(groot, 'defaultAreaEdgeColor', p.Results.areaEdgeColor);
    set(groot, 'defaultAreaEdgeAlpha', p.Results.areaEdgeAlpha);
    set(groot, 'defaultAreaLineWidth', p.Results.areaLineWidth);
+   
+   % Patch plot defaults
+   set(groot, 'defaultPatchEdgeAlpha', p.Results.patchEdgeAlpha);
+   set(groot, 'defaultPatchEdgeColor', p.Results.patchEdgeColor); 
+   set(groot, 'defaultPatchFaceAlpha', p.Results.patchFaceAlpha);                
+   set(groot, 'defaultPatchFaceColor', p.Results.patchFaceColor); 
+   set(groot, 'defaultPatchLineWidth', p.Results.patchLineWidth);
    
    % Font defaults
    set(groot, 'defaultAxesFontSize', p.Results.axesFontSize);

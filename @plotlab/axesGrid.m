@@ -50,7 +50,7 @@ function theAxesGrid = axesGrid(figureHandle, varargin)
         yo = 0.99 - p.Results.topMargin - (row)*(normalizedHeight+p.Results.heightMargin) + p.Results.heightMargin;
         for col = 1:p.Results.colsNum
             xo = p.Results.leftMargin + (col-1)*(normalizedWidth+p.Results.widthMargin);
-            theAxesGrid{row,col} = axes('OuterPosition', [xo*figWidth yo*figHeight normalizedWidth*figWidth normalizedHeight*figHeight]);
+            theAxesGrid{row,col} = axes('Position', [xo*figWidth yo*figHeight normalizedWidth*figWidth normalizedHeight*figHeight]);
         end
     end
 end
