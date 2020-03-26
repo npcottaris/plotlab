@@ -78,9 +78,18 @@ classdef plotlab < handle
         % Set the default figure size
         setDefaultFigureSize(varargin);
         
+        % Generate a grid of axes
+        theAxesGrid = axesGrid(theFigureHandle, varargin);
+
         %% Methods to achieve effects not controlled by the different properties of the graphics root object
         % Offset the axes
         offsetAxes(axesHandle, varargin);
+        
+        % Crosshairs in a 2D plot
+        crossHairs2D(axesHandle, varargin);
+        
+        % Add colorbar without chaning the figure size
+        colorbar(axesHandle, varargin);
         
         % Reposition the legend
         repositionLegend(legendHandle, xyPos);

@@ -73,6 +73,8 @@ function applyRecipe(obj, varargin)
    p.addParameter('axesTickLength', [0.015 0.01], @(x)(isnumeric(x)&&(numel(x) == 2)));
    p.addParameter('axesTickDir', 'both',  @(x)(ismember(x, {'both', 'in', 'out'})));
    p.addParameter('axesTickDirMode', 'manual', @(x)(ismember(x, {'auto', 'manual'})));
+   p.addParameter('axesXMinorTick', 'off', @(x)(ismember(x, {'on', 'off'})));
+   p.addParameter('axesYMinorTick', 'off', @(x)(ismember(x, {'on', 'off'})));
    
    % Axes line width & box
    p.addParameter('axesLineWidth', 1.0, @isscalar);
@@ -136,6 +138,8 @@ function applyRecipe(obj, varargin)
    set(groot, 'defaultAxesTickLength', p.Results.axesTickLength);
    set(groot, 'defaultAxesTickDir', p.Results.axesTickDir);
    set(groot, 'defaultAxesTickDirMode', p.Results.axesTickDirMode);
+   set(groot, 'defaultAxesXMinorTick', p.Results.axesXMinorTick);
+   set(groot, 'defaultAxesYMinorTick', p.Results.axesYMinorTick);
    
    % Axes line width & Box
    set(groot, 'defaultAxesLineWidth', p.Results.axesLineWidth);
@@ -145,6 +149,12 @@ function applyRecipe(obj, varargin)
    set(groot, 'defaultAxesXGrid', p.Results.axesXGrid);
    set(groot, 'defaultAxesYGrid', p.Results.axesYGrid);
    set(groot, 'defaultAxesMinorGridAlpha', p.Results.axesMinorGridAlpha);
+   
+   % Active position property
+   set(groot, 'defaultAxesActivePositionProperty', 'outerposition');
+   
+   % Colorbar
+   set(groot, 'defaultColorbarAxisLocationMode', 'manual');
    
    % Legend location & apparance
    set(groot, 'defaultLegendLocation', p.Results.legendLocation);
