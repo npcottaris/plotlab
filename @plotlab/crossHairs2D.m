@@ -52,5 +52,9 @@ function crossHairs2D(axesHandle, varargin)
         p1.Color = p.Results.lineColor;
         p2.Color = p.Results.lineColor;
     end
+    
+    set(p1, 'HandleVisibility','off');
+    set(p2, 'HandleVisibility','off');
+    
 end
 
