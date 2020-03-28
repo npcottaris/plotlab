@@ -53,8 +53,8 @@ function crossHairs2D(axesHandle, varargin)
         p2.Color = p.Results.lineColor;
     end
     
+    % Set handle visibility to off so no cross-hairs do not appear in the legend.
     set(p1, 'HandleVisibility','off');
-    set(p2, 'HandleVisibility','off');
-    
+    set(p2, 'HandleVisibility','off');   
 end
 
