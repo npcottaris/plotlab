@@ -29,9 +29,9 @@ function crossHairs2D(axesHandle, varargin)
     p.addParameter('center', [0 0], @(x)(isnumeric(x)&&(numel(x)==2)));
     p.addParameter('xRange', [-1 1], @(x)(isnumeric(x)&&(numel(x)==2)));
     p.addParameter('yRange', [-1 1], @(x)(isnumeric(x)&&(numel(x)==2)));
-    p.addParameter('lineWidth', [], @(x)( (isempty(x) || isscalar(x))));
+    p.addParameter('lineWidth', 1.0, @(x)( (isempty(x) || isscalar(x))));
     p.addParameter('lineColor', [0 0 0], @(x)( (isempty(x) || (isnumeric(x)&&(numel(x)==3)) )));
-    p.addParameter('lineStyle', [], @(x)( (isempty(x) || ischar(x))));
+    p.addParameter('lineStyle', '-', @(x)( (isempty(x) || ischar(x))));
     p.parse(varargin{:});
     
     hold(axesHandle, 'on');
