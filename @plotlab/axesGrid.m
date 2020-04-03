@@ -2,7 +2,7 @@ function theAxesGrid = axesGrid(figureHandle, varargin)
 % Generate a 2D grid of axes
 %
 % Syntax:
-%   theAxesGrid = generateAxesGrid(figureHandle, varargin)
+%   theAxesGrid = axesGrid(figureHandle, varargin)
 %
 % Description:
 %    Generate a 2D grid of axes
@@ -28,8 +28,8 @@ function theAxesGrid = axesGrid(figureHandle, varargin)
 
     % parse inputs
     p = inputParser;
-    p.addParameter('rowsNum',  2, @isscalar);
-    p.addParameter('colsNum',  2, @isscalar);
+    p.addParameter('rowsNum',  1, @isscalar);
+    p.addParameter('colsNum',  1, @isscalar);
     p.addParameter('widthMargin',  0.02, @isscalar);
     p.addParameter('heightMargin', 0.02, @isscalar);
     p.addParameter('leftMargin',  0.02, @isscalar);
