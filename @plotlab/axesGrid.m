@@ -46,17 +46,26 @@ function theAxesGrid = axesGrid(figureHandle, varargin)
         figWidth = figPos(3);
         figHeight = figPos(4);
 
-        normalizedWidth  = ((1.0-p.Results.leftMargin-p.Results.rightMargin) - p.Results.widthMargin*(p.Results.colsNum-1) - 0.01)/p.Results.colsNum;
-        normalizedHeight = ((1.0-p.Results.bottomMargin-p.Results.topMargin) - p.Results.heightMargin*(p.Results.rowsNum-1) - 0.01)/p.Results.rowsNum;
+        if (p.Results.rowsNum * p.Results.colsNum == 1)
+            xo = p.Results.leftMargin;
+            yo = p.Results.bottomMargin;
+            normalizedWidth = 1-xo-p.Results.rightMargin;
+            normalizedHeight = 1-yo-p.Results.topMargin;
+            theAxesGrid{1,1} = axes('Position',  [xo*figWidth yo*figHeight normalizedWidth*figWidth normalizedHeight*figHeight]);
+        else 
+            normalizedWidth  = ((1.0-p.Results.leftMargin-p.Results.rightMargin) - p.Results.widthMargin*(p.Results.colsNum-1) - 0.01)/p.Results.colsNum;
+            normalizedHeight = ((1.0-p.Results.bottomMargin-p.Results.topMargin) - p.Results.heightMargin*(p.Results.rowsNum-1) - 0.01)/p.Results.rowsNum;
 
-        theAxesGrid = cell(p.Results.rowsNum, p.Results.colsNum);
-        for row = 1:p.Results.rowsNum
-            yo = 0.99 - p.Results.topMargin - (row)*(normalizedHeight+p.Results.heightMargin) + p.Results.heightMargin;
-            for col = 1:p.Results.colsNum
-                xo = p.Results.leftMargin + (col-1)*(normalizedWidth+p.Results.widthMargin);
-                theAxesGrid{row,col} = axes('Position', [xo*figWidth yo*figHeight normalizedWidth*figWidth normalizedHeight*figHeight]);
+            theAxesGrid = cell(p.Results.rowsNum, p.Results.colsNum);
+            for row = 1:p.Results.rowsNum
+                yo = 0.99 - p.Results.topMargin - (row)*(normalizedHeight+p.Results.heightMargin) + p.Results.heightMargin;
+                for col = 1:p.Results.colsNum
+                    xo = p.Results.leftMargin + (col-1)*(normalizedWidth+p.Results.widthMargin);
+                    theAxesGrid{row,col} = axes('Position', [xo*figWidth yo*figHeight normalizedWidth*figWidth normalizedHeight*figHeight]);
+                end
             end
         end
+        
     else
         t = tiledlayout(figureHandle, p.Results.rowsNum,p.Results.colsNum);
         t.TileSpacing = p.Results.spacing;
