@@ -30,7 +30,7 @@ function exportFig(obj, hFig, graphicFormat, fileName, fileDir)
     else
         fName = fullfile(fileDir, fileName);
     end
-    fName = sprintf('%s-%s', fName, obj.lightTheme);
+    fName = sprintf('%s-%s.%s', fName, obj.lightTheme, lower(graphicFormat));
     print(hFig, fName, sprintf('-d%s', lower(graphicFormat)), '-r300');
     fprintf('Figure exported to ''%s''.\n', fName);
 end
