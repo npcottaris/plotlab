@@ -73,6 +73,9 @@ function applyRecipe(obj, varargin)
    % Font  properties
    p.addParameter('axesFontSize', 16, @isscalar);
    p.addParameter('axesFontName', 'Helvetica', @ischar);
+   p.addParameter('axesFontAngle', 'normal', @ischar);
+   p.addParameter('axesFontWeight', 'normal', @ischar);
+   
    p.addParameter('axesTitleFontWeight', 'normal', @(x)(ismember(x, {'normal', 'bold', 'italic'})));
    p.addParameter('axesLabelFontSizeMultiplier', 1.25, @isscalar);
    
@@ -145,6 +148,8 @@ function applyRecipe(obj, varargin)
    % Font defaults
    set(groot, 'defaultAxesFontSize', p.Results.axesFontSize);
    set(groot, 'defaultAxesFontName', p.Results.axesFontName);
+   set(groot, 'defaultAxesFontAngle', p.Results.axesFontAngle);
+   set(groot, 'defaultAxesFontWeight', p.Results.axesFontWeight);
    set(groot, 'defaultAxesTitleFontWeight', p.Results.axesTitleFontWeight);
    set(groot, 'defaultAxesLabelFontSizeMultiplier', p.Results.axesLabelFontSizeMultiplier);
    
