@@ -90,17 +90,22 @@ function applyRecipe(obj, varargin)
    p.addParameter('axesXMinorTick', 'off', @(x)(ismember(x, {'on', 'off'})));
    p.addParameter('axesYMinorTick', 'off', @(x)(ismember(x, {'on', 'off'})));
    
-   % Axes line width & box
-   p.addParameter('axesLineWidth', 1.0, @isscalar);
-   p.addParameter('axesBox', 'off', @(x)(ismember(x, {'on', 'off'})));
-   
+
    % Grid defaults
    p.addParameter('axesXGrid', 'on', @(x)(ismember(x, {'on', 'off'})));
    p.addParameter('axesYGrid', 'on', @(x)(ismember(x, {'on', 'off'})));
+   p.addParameter('axesMinorGridLineStyle', '-', @(x)(ismember(x, {'-', '--', ':'})));
+   p.addParameter('axesXMinorGrid', 'on', @(x)(ismember(x, {'on', 'off'})));
+   p.addParameter('axesYMinorGrid', 'on', @(x)(ismember(x, {'on', 'off'})));
    p.addParameter('axesMinorGridAlpha', 0, @isscalar);
    
    % Legend
    p.addParameter('legendLocation', 'NorthWest', @ischar);
+   
+  % Axes line width & box
+   p.addParameter('axesLineWidth', 1.0, @isscalar);
+   p.addParameter('axesBox', 'off', @(x)(ismember(x, {'on', 'off'})));
+   
    
    % Parse the input
    p.parse(obj, varargin{:});
@@ -175,6 +180,9 @@ function applyRecipe(obj, varargin)
    % Grid defaults
    set(groot, 'defaultAxesXGrid', p.Results.axesXGrid);
    set(groot, 'defaultAxesYGrid', p.Results.axesYGrid);
+   set(groot, 'defaultAxesMinorGridLineStyle', p.Results.axesMinorGridLineStyle);
+   set(groot, 'defaultAxesXMinorGrid', p.Results.axesXMinorGrid);
+   set(groot, 'defaultAxesYMinorGrid', p.Results.axesYMinorGrid);
    set(groot, 'defaultAxesMinorGridAlpha', p.Results.axesMinorGridAlpha);
    
    % Active position property
