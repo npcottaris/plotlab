@@ -79,6 +79,10 @@ function applyRecipe(obj, varargin)
    p.addParameter('axesTitleFontWeight', 'normal', @(x)(ismember(x, {'normal', 'bold', 'italic'})));
    p.addParameter('axesLabelFontSizeMultiplier', 1.25, @isscalar);
    
+   % Axes scaling
+   p.addParameter('axesXScale', 'linear', @(x)(ismember(x, {'linear', 'log'})));
+   p.addParameter('axesYScale', 'linear', @(x)(ismember(x, {'linear', 'log'})));
+   
    % Ticks
    p.addParameter('axesTickLength', [0.015 0.01], @(x)(isnumeric(x)&&(numel(x) == 2)));
    p.addParameter('axesTickDir', 'both',  @(x)(ismember(x, {'both', 'in', 'out'})));
@@ -144,6 +148,10 @@ function applyRecipe(obj, varargin)
    set(groot, 'defaultPatchFaceAlpha', p.Results.patchFaceAlpha);                
    set(groot, 'defaultPatchFaceColor', p.Results.patchFaceColor); 
    set(groot, 'defaultPatchLineWidth', p.Results.patchLineWidth);
+   
+   % Axes scaling 
+   set(groot, 'defaultAxesXScale', p.Results.axesXScale);
+   set(groot, 'defaultAxesYScale', p.Results.axesYScale);
    
    % Font defaults
    set(groot, 'defaultAxesFontSize', p.Results.axesFontSize);

@@ -33,8 +33,11 @@ function resetAllDefaults()
     for k = 1:numel(setDefaultProperties)
         defaultPropertyName = setDefaultProperties{k};
         factoryPropertyName = strrep(defaultPropertyName, 'default', 'factory');
-        set(groot, setDefaultProperties{k}, p.(factoryPropertyName));
-        %fprintf('Overwrote value of ''%s'' with value of ''%s''.\n', defaultPropertyName, factoryPropertyName);
+        if (isfield(p, factoryPropertyName))
+            set(groot, setDefaultProperties{k}, p.(factoryPropertyName));
+        else
+            fprintf(2,'plotlab.(%s): ''%s'' not found in groot.\n', mfilename(), factoryPropertyName);
+        end
     end
 end
 
