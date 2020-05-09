@@ -45,6 +45,7 @@ function applyRecipe(obj, varargin)
    % Line plot properties
    p.addParameter('lineWidth', 2, @isscalar);
    p.addParameter('lineMarker', 'o', @ischar);
+   p.addParameter('lineColor', [0.75 0.75 0.75], @(x)( (isnumeric(x)&&(numel(x) == 3)) ) );
    p.addParameter('lineMarkerSize',12, @isscalar);
    p.addParameter('lineMarkerFaceColor', [0.75 0.75 0.75], @(x)( (isnumeric(x)&&(numel(x) == 3)) ) );
    p.addParameter('lineMarkerEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
@@ -62,6 +63,9 @@ function applyRecipe(obj, varargin)
    p.addParameter('areaEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
    p.addParameter('areaEdgeAlpha', 0.5, @isscalar);
    p.addParameter('areaLineWidth', 1.5, @isscalar);
+   
+   % Contour plot properties
+   p.addParameter('contourLineWidth', 1.5, @isscalar);
    
    % Patch plot properties
    p.addParameter('patchEdgeAlpha', 1, @isscalar); 
@@ -130,6 +134,7 @@ function applyRecipe(obj, varargin)
    % Line plot defaults
    set(groot, 'defaultLineLineWidth', p.Results.lineWidth);
    set(groot, 'defaultLineMarker', p.Results.lineMarker);
+   set(groot, 'defaultLineColor', p.Results.lineColor);
    set(groot, 'defaultLineMarkerSize',p.Results.lineMarkerSize);
    set(groot, 'defaultLineMarkerFaceColor', p.Results.lineMarkerFaceColor);
    set(groot, 'defaultLineMarkerEdgeColor', p.Results.lineMarkerEdgeColor);
@@ -146,6 +151,9 @@ function applyRecipe(obj, varargin)
    set(groot, 'defaultAreaEdgeColor', p.Results.areaEdgeColor);
    set(groot, 'defaultAreaEdgeAlpha', p.Results.areaEdgeAlpha);
    set(groot, 'defaultAreaLineWidth', p.Results.areaLineWidth);
+   
+   % Contour plot defaults
+   set(groot, 'defaultContourLineWidth', p.Results.contourLineWidth);
    
    % Patch plot defaults
    set(groot, 'defaultPatchEdgeAlpha', p.Results.patchEdgeAlpha);
