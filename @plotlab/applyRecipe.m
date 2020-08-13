@@ -57,6 +57,15 @@ function applyRecipe(obj, varargin)
    p.addParameter('scatterMarkerEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
    p.addParameter('scatterMarkerFaceAlpha', 0.4, @isscalar);
    
+   % Stem plot properties
+   p.addParameter('stemMarkerSize', 12, @isscalar);
+   
+   % Stair plot properties
+   p.addParameter('stairMarkerSize', 12, @isscalar);
+   
+   % Surface plot properties
+   p.addParameter('surfaceMarkerSize', 12, @isscalar);
+   
    % Area plot properties
    p.addParameter('areaFaceColor', 'flat', @(x)( (ismember(x, {'flat'})) || (isnumeric(x)&&(numel(x) == 3)) ) );
    p.addParameter('areaFaceAlpha', 0.3, @isscalar);
@@ -94,7 +103,6 @@ function applyRecipe(obj, varargin)
    p.addParameter('axesXMinorTick', 'off', @(x)(ismember(x, {'on', 'off'})));
    p.addParameter('axesYMinorTick', 'off', @(x)(ismember(x, {'on', 'off'})));
    
-
    % Grid defaults
    p.addParameter('axesXGrid', 'on', @(x)(ismember(x, {'on', 'off'})));
    p.addParameter('axesYGrid', 'on', @(x)(ismember(x, {'on', 'off'})));
@@ -106,10 +114,9 @@ function applyRecipe(obj, varargin)
    % Legend
    p.addParameter('legendLocation', 'NorthWest', @ischar);
    
-  % Axes line width & box
+   % Axes line width & box
    p.addParameter('axesLineWidth', 1.0, @isscalar);
    p.addParameter('axesBox', 'off', @(x)(ismember(x, {'on', 'off'})));
-   
    
    % Parse the input
    p.parse(obj, varargin{:});
@@ -120,8 +127,6 @@ function applyRecipe(obj, varargin)
    % Reset all default graphics parameters
    plotlab.resetAllDefaults();
  
-   % Apply plotlab's default recipe
-
    % Figure renderer: Painters for better 2D graphics
    set(groot, 'defaultFigureRenderer',p.Results.renderer);
    
@@ -145,6 +150,15 @@ function applyRecipe(obj, varargin)
    set(groot, 'defaultScatterMarkerFaceAlpha', p.Results.scatterMarkerFaceAlpha);
    set(groot, 'defaultScatterLineWidth', p.Results.scatterLineWidth);
      
+   % Stem plot properties
+   set(groot, 'defaultStemMarkerSize', p.Results.stemMarkerSize);
+   
+   % Stair plot properties
+   set(groot, 'defaultStairMarkerSize', p.Results.stairMarkerSize);
+   
+   % Surface plot properties
+   set(groot, 'defaultSurfaceMarkerSize', p.Results.surfaceMarkerSize);
+   
    % Area plot defaults
    set(groot, 'defaultAreaFaceColor', p.Results.areaFaceColor);
    set(groot, 'defaultAreaFaceAlpha', p.Results.areaFaceAlpha);
