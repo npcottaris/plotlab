@@ -81,6 +81,9 @@ classdef plotlab < handle
         % Generate a grid of axes
         theAxesGrid = axesGrid(theFigureHandle, varargin);
 
+        % Toggle the visibility of the axes
+        toggleAxesVisibility(theAxes);
+        
         %% Methods to achieve effects not controlled by the different properties of the graphics root object
         % Offset the axes
         offsetAxes(axesHandle, varargin);
