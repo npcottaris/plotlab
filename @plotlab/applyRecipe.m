@@ -56,6 +56,7 @@ function applyRecipe(obj, varargin)
    p.addParameter('scatterMarkerFaceColor', 'flat', @(x)( (ismember(x, {'flat'})) || (isnumeric(x)&&(numel(x) == 3)) ) );
    p.addParameter('scatterMarkerEdgeColor', [0 0 0], @(x)(isnumeric(x)&&(numel(x) == 3)));
    p.addParameter('scatterMarkerFaceAlpha', 0.4, @isscalar);
+   p.addParameter('scatterEdgeFaceAlpha', 0.4, @isscalar);
    
    % Stem plot properties
    p.addParameter('stemMarkerSize', 12, @isscalar);
